@@ -24,7 +24,7 @@ public class Inventario_Y_Stock {
            int usuario = Integer.parseInt(br.readLine());
            System.out.println("Ingrese su Clave: ");
            int clave = Integer.parseInt(br.readLine());
-           if (usuario==123456 && clave==123456){
+           if (usuario==123 && clave==123){
                System.out.println("Ingreso OK!!");
                contador = 3;
                System.out.println("BIENVENIDO!!");
