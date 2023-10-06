@@ -18,7 +18,7 @@ public class Cliente {
     public Cliente(int idCodigoCliente, int idTiposCliente, String direccion, String telefono, String correoElectronico) {
         this.idCodigoCliente = idCodigoCliente;
         this.idTiposCliente = idTiposCliente;
-        this.direccion = direccion;
+        this.direccion =  direccion;
         this.telefono = telefono;
         this.correoElectronico = correoElectronico;
     }
