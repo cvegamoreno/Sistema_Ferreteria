@@ -8,12 +8,12 @@ package Frame;
  *
  * @author usuario
  */
-public class EmpleadoForm extends javax.swing.JFrame {
+public class VentaForm extends javax.swing.JFrame {
 
     /**
      * Creates new form EmpleadoForm
      */
-    public EmpleadoForm() {
+    public VentaForm() {
         initComponents();
     }
 
@@ -32,39 +32,39 @@ public class EmpleadoForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         btnInsertar = new javax.swing.JButton();
-        txtid = new javax.swing.JTextField();
-        txtdni = new javax.swing.JTextField();
-        txtruc = new javax.swing.JTextField();
-        txtnombres = new javax.swing.JTextField();
-        txtdireccion = new javax.swing.JTextField();
-        txttelefono = new javax.swing.JTextField();
-        txttipocliente = new javax.swing.JTextField();
+        javax.swing.JTextField txtidventa = new javax.swing.JTextField();
+        txtclienteventa = new javax.swing.JTextField();
+        txtfechaventa = new javax.swing.JTextField();
+        txttotalventa = new javax.swing.JTextField();
         btnListar = new javax.swing.JButton();
         btnActualizar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        boxtipocomprobante = new javax.swing.JComboBox<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(102, 102, 255));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        jLabel1.setText("MANTENIMIENTO DE CLIENTES");
+        jLabel1.setText("VENTA DE PRODUCTO");
 
-        jLabel2.setText("ID:");
+        jLabel2.setText("ID VENTA:");
 
-        jLabel3.setText("DNI:");
+        jLabel3.setText("ID CLIENTE:");
 
-        jLabel4.setText("RUC:");
+        jLabel4.setText("FECHA:");
 
-        jLabel5.setText("NOMBRES:");
+        jLabel5.setText("TOTAL VENTA:");
 
-        jLabel6.setText("DIRECCIÓN:");
-
-        jLabel7.setText("TELEFONO:");
-
-        jLabel8.setText("TIPO DE CLIENTE:");
+        jLabel6.setText("TIPO DE COMPROBANTE:");
 
         btnInsertar.setText("GRABAR");
+
+        txtidventa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtidventaActionPerformed(evt);
+            }
+        });
 
         btnListar.setText("VER");
 
@@ -72,28 +72,21 @@ public class EmpleadoForm extends javax.swing.JFrame {
 
         btnEliminar.setText("ELIMINAR");
 
+        boxtipocomprobante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boleta", "Factura" }));
+        boxtipocomprobante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boxtipocomprobanteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(246, 246, 246)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtdni)
-                            .addComponent(txtruc)
-                            .addComponent(txtnombres)
-                            .addComponent(txtdireccion)
-                            .addComponent(txttelefono)
-                            .addComponent(txttipocliente))))
-                .addGap(30, 30, 30))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(193, 193, 193))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -103,19 +96,7 @@ public class EmpleadoForm extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jLabel5))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel7))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel8))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
+                        .addGap(44, 44, 44)
                         .addComponent(btnListar)
                         .addGap(41, 41, 41)
                         .addComponent(btnInsertar)
@@ -123,51 +104,70 @@ public class EmpleadoForm extends javax.swing.JFrame {
                         .addComponent(btnActualizar)
                         .addGap(37, 37, 37)
                         .addComponent(btnEliminar)))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(154, 154, 154)
+                        .addComponent(boxtipocomprobante, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(234, 234, 234)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtidventa, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
+                            .addComponent(txtclienteventa)
+                            .addComponent(txtfechaventa)
+                            .addComponent(txttotalventa))))
+                .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtidventa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtdni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtclienteventa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtruc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtfechaventa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(txtnombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txttotalventa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtdireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txttelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txttipocliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(boxtipocomprobante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnInsertar)
                     .addComponent(btnListar)
                     .addComponent(btnActualizar)
                     .addComponent(btnEliminar))
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtidventaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtidventaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtidventaActionPerformed
+
+    private void boxtipocomprobanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boxtipocomprobanteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boxtipocomprobanteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,25 +186,29 @@ public class EmpleadoForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(EmpleadoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(EmpleadoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(EmpleadoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(EmpleadoForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentaForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EmpleadoForm().setVisible(true);
+                new VentaForm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> boxtipocomprobante;
     private javax.swing.JButton btnActualizar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnInsertar;
@@ -215,14 +219,8 @@ public class EmpleadoForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField txtdireccion;
-    private javax.swing.JTextField txtdni;
-    private javax.swing.JTextField txtid;
-    private javax.swing.JTextField txtnombres;
-    private javax.swing.JTextField txtruc;
-    private javax.swing.JTextField txttelefono;
-    private javax.swing.JTextField txttipocliente;
+    private javax.swing.JTextField txtclienteventa;
+    private javax.swing.JTextField txtfechaventa;
+    private javax.swing.JTextField txttotalventa;
     // End of variables declaration//GEN-END:variables
 }
