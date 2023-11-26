@@ -13,12 +13,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author usuario
  */
 public class DAOProducto {
+
     Conexion oCon;
     Connection con;
     PreparedStatement pst;
@@ -27,71 +30,79 @@ public class DAOProducto {
     private final String SQLEDITAR = "update productos SET producto_id= ?, nombre =?, descripcion=?, precio_unitario =?, stock =?, medidas =? WHERE producto_id =?";
     private final String SQLELIMINAR = "DELETE FROM productos WHERE producto_id=?";
     private final String SQLVER = "select * from productos";
-    
-    public DAOProducto(){
+
+    public DAOProducto() {
         oCon = new Conexion();
         con = oCon.conectar();
     }
-    
-    public void agregarProducto(DTOProducto oProd){
-         try {
+
+    public void agregarProducto(DTOProducto objeto) {
+        try {
+            // Verificar que no haya campos vacíos
+            if (objeto.getNombreProd().isEmpty() || objeto.getDescripcionprod().isEmpty() || objeto.getPrecioprod() <= 0 || objeto.getStock() < 0 || objeto.getMedidas() <= 0) {
+                JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+                return; // Sale del método si hay campos vacíos
+            }
 
             pst = con.prepareStatement(SQLINSERTAR);
-            pst.setInt(1, oProd.getIdProducto());
-            pst.setString(2, oProd.getNombreProd());
-            pst.setString(3, oProd.getDescripcionprod());
-            pst.setDouble(4, oProd.getPrecioprod());
-            pst.setInt(5, oProd.getStock());
-            pst.setDouble(6, oProd.getMedidas());
+            pst.setInt(1, objeto.getIdProducto());
+            pst.setString(2, objeto.getNombreProd());
+            pst.setString(3, objeto.getDescripcionprod());
+            pst.setDouble(4, objeto.getPrecioprod());
+            pst.setInt(5, objeto.getStock());
+            pst.setDouble(6, objeto.getMedidas());
             pst.executeUpdate();
-
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(DAOProducto.class.getName()).log(Level.SEVERE, null, ex);
-           
-        }
-        finally{
-             oCon.cerrarConexion();
+
+        } finally {
+            oCon.cerrarConexion();
         }
     }
-    
-    public void editarProducto(DTOProducto oProd){
-         try {
 
+    public void editarProducto(DTOProducto objeto) {
+        try {
+
+            // Verificar que no haya campos vacíos
+            if (objeto.getNombreProd().isEmpty() || objeto.getDescripcionprod().isEmpty() || objeto.getPrecioprod() <= 0 || objeto.getStock() < 0 || objeto.getMedidas() <= 0) {
+                JOptionPane.showMessageDialog(null, "Por favor, complete todos los campos obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+                return; // Sale del método si hay campos vacíos
+            }
             pst = con.prepareStatement(SQLEDITAR);
-            pst.setInt(1, oProd.getIdProducto());
-            pst.setString(2, oProd.getNombreProd());
-            pst.setString(3, oProd.getDescripcionprod());
-            pst.setDouble(4, oProd.getPrecioprod());
-            pst.setInt(5, oProd.getStock());
-            pst.setDouble(6, oProd.getMedidas());
-            pst.setInt(7, oProd.getIdProducto());
+            pst.setInt(1, objeto.getIdProducto());
+            pst.setString(2, objeto.getNombreProd());
+            pst.setString(3, objeto.getDescripcionprod());
+            pst.setDouble(4, objeto.getPrecioprod());
+            pst.setInt(5, objeto.getStock());
+            pst.setDouble(6, objeto.getMedidas());
+            pst.setInt(7, objeto.getIdProducto());
             pst.executeUpdate();
 
         } catch (SQLException ex) {
             Logger.getLogger(DAOProducto.class.getName()).log(Level.SEVERE, null, ex);
-           
-        }
-        finally{
-             oCon.cerrarConexion();
+
+        } finally {
+            oCon.cerrarConexion();
         }
     }
-    
-    public void eliminarProducto(DTOProducto oProd) {
+
+    public void eliminarProducto(DTOProducto objeto) {
 
         try {
 
             pst = con.prepareStatement(SQLELIMINAR);
-            pst.setInt(1, oProd.getIdProducto());
+            pst.setInt(1, objeto.getIdProducto());
             pst.executeUpdate();
 
         } catch (SQLException ex) {
             Logger.getLogger(DAOProducto.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        finally{
-             oCon.cerrarConexion();
+        } finally {
+            oCon.cerrarConexion();
         }
     }
-    
+
     public DefaultTableModel verProducto() {
         DefaultTableModel modeloProducto = new DefaultTableModel();
 
@@ -115,9 +126,8 @@ public class DAOProducto {
 
         } catch (SQLException ex) {
             Logger.getLogger(DAOProducto.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        finally{
-             oCon.cerrarConexion();
+        } finally {
+            oCon.cerrarConexion();
         }
 
         return modeloProducto;
