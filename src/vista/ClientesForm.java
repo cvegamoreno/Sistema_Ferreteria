@@ -4,8 +4,8 @@
  */
 package vista;
 
-import modelo.DAOCliente;
-import modelo.DTOCliente;
+import javax.swing.DefaultComboBoxModel;
+import modelo.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,28 +19,35 @@ public class ClientesForm extends javax.swing.JFrame {
      */
     public ClientesForm() {
         initComponents();
+        verCliente();
+        verTipoCliente();
     }
-    
-        void limpiar(){
+
+    void limpiar() {
         txtId.setText("");
         txtNombre2.setText("");
-        txtDni.setText("");
-        txtRuc.setText("");
+        txtNumeroCliente.setText("");
         txtDireccion.setText("");
         txtTelefono.setText("");
         txtId.requestFocus();
     }
-    void verCliente(){
+
+    void verCliente() {
         DefaultTableModel modelocliente;
         DAOCliente oDCli = new DAOCliente();
         modelocliente = oDCli.verCliente();
         tblCliente.setModel(modelocliente);
-        
+    }
+
+    void habilitarBotones(boolean a) {
+        btnAgregar.setEnabled(a);
     }
     
-    void habilitarBotones(boolean a){
-        btnAgregar.setEnabled(a);
-        
+    void verTipoCliente(){
+        DefaultComboBoxModel modelocliente;
+        DAOTipoCliente objeto = new DAOTipoCliente();
+        modelocliente = objeto.verTipoCl();
+        CboTipoCliente.setModel(modelocliente);  
     }
 
     /**
@@ -67,16 +74,15 @@ public class ClientesForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         txtNombre2 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        txtRuc = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtDni = new javax.swing.JTextField();
+        txtNumeroCliente = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtDireccion = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtTelefono = new javax.swing.JTextField();
         btnAgregar = new javax.swing.JButton();
         btnSalir2 = new javax.swing.JButton();
+        CboTipoCliente = new javax.swing.JComboBox<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
@@ -140,20 +146,15 @@ public class ClientesForm extends javax.swing.JFrame {
         jPanel2.add(txtNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 390, 30));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel6.setText("R.U.C :");
+        jLabel6.setText("Tipo :");
         jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 210, -1, 30));
-        jPanel2.add(txtRuc, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 120, 30));
-
-        jLabel10.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel10.setText("O");
-        jPanel2.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 20, 30));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel7.setText("DNI :");
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 210, -1, 30));
+        jLabel7.setText("DNI / RUC:");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, -1, 30));
 
-        txtDni.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jPanel2.add(txtDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, 120, -1));
+        txtNumeroCliente.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jPanel2.add(txtNumeroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 210, 120, -1));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel8.setText("Direccion :");
@@ -182,6 +183,13 @@ public class ClientesForm extends javax.swing.JFrame {
         btnSalir2.setText("Salir");
         jPanel2.add(btnSalir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, 110, 50));
 
+        CboTipoCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CboTipoClienteActionPerformed(evt);
+            }
+        });
+        jPanel2.add(CboTipoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 110, 30));
+
         jTextArea1.setBackground(java.awt.Color.darkGray);
         jTextArea1.setColumns(20);
         jTextArea1.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -202,31 +210,35 @@ public class ClientesForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        int idCliente,idTipoCliente,numeroCliente;
-        String nombreCliente,direccion,telefono;
-        
+        int idCliente, idTipoCliente, numeroCliente;
+        String nombreCliente, direccion, telefono;
+
         idCliente = Integer.parseInt(txtId.getText());
         nombreCliente = txtNombre2.getText();
-        idTipoCliente = Integer.parseInt(txtDni.getText();
-        numeroCliente = Double.parseDouble(txtRuc.getText());
+        idTipoCliente = Integer.parseInt(txtNumeroCliente.getText());
+        numeroCliente = Double.parseDouble(txtDniRuc.getText());
         direccion = txtDireccion.getText();
         telefono = txtTelefono.getText();
-        
-        DTOCliente objeto= new DTOCliente();
+
+        DTOCliente objeto = new DTOCliente();
         objeto.setIdCliente(idCliente);
         objeto.setNombreCliente(nombreCliente);
         objeto.setDireccion(direccion);
         objeto.setTelefono(telefono);
         objeto.setIdTipoCliente(idTipoCliente);
         objeto.setNumeroCliente(numeroCliente);
-        
-        DAOCliente oDCli=new DAOCliente();
+
+        DAOCliente oDCli = new DAOCliente();
         oDCli.agregar(objeto);
-        
+
         verCliente();
         limpiar();
         habilitarBotones(false);
     }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void CboTipoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CboTipoClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CboTipoClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -267,12 +279,12 @@ public class ClientesForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> CboTipoCliente;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnSalir2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -289,11 +301,10 @@ public class ClientesForm extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTable tblCliente;
     private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtDni;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNombre2;
-    private javax.swing.JTextField txtRuc;
+    private javax.swing.JTextField txtNumeroCliente;
     private javax.swing.JTextField txtTelefono;
     // End of variables declaration//GEN-END:variables
 }

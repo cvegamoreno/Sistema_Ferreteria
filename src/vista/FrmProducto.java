@@ -4,8 +4,7 @@
  */
 package vista;
 
-import modelo.DAOProducto;
-import modelo.DTOProducto;
+import modelo.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
