@@ -4,6 +4,10 @@
  */
 package vista;
 
+import modelo.DAOCliente;
+import modelo.DTOCliente;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author PC_TONY
@@ -15,6 +19,28 @@ public class ClientesForm extends javax.swing.JFrame {
      */
     public ClientesForm() {
         initComponents();
+    }
+    
+        void limpiar(){
+        txtId.setText("");
+        txtNombre2.setText("");
+        txtDni.setText("");
+        txtRuc.setText("");
+        txtDireccion.setText("");
+        txtTelefono.setText("");
+        txtId.requestFocus();
+    }
+    void verCliente(){
+        DefaultTableModel modelocliente;
+        DAOCliente oDCli = new DAOCliente();
+        modelocliente = oDCli.verCliente();
+        tblCliente.setModel(modelocliente);
+        
+    }
+    
+    void habilitarBotones(boolean a){
+        btnAgregar.setEnabled(a);
+        
     }
 
     /**
@@ -145,6 +171,11 @@ public class ClientesForm extends javax.swing.JFrame {
 
         btnAgregar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnAgregar.setText("Agregar");
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 390, 110, 50));
 
         btnSalir2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -169,6 +200,33 @@ public class ClientesForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+        int idCliente,idTipoCliente,numeroCliente;
+        String nombreCliente,direccion,telefono;
+        
+        idCliente = Integer.parseInt(txtId.getText());
+        nombreCliente = txtNombre2.getText();
+        idTipoCliente = Integer.parseInt(txtDni.getText();
+        numeroCliente = Double.parseDouble(txtRuc.getText());
+        direccion = txtDireccion.getText();
+        telefono = txtTelefono.getText();
+        
+        DTOCliente objeto= new DTOCliente();
+        objeto.setIdCliente(idCliente);
+        objeto.setNombreCliente(nombreCliente);
+        objeto.setDireccion(direccion);
+        objeto.setTelefono(telefono);
+        objeto.setIdTipoCliente(idTipoCliente);
+        objeto.setNumeroCliente(numeroCliente);
+        
+        DAOCliente oDCli=new DAOCliente();
+        oDCli.agregar(objeto);
+        
+        verCliente();
+        limpiar();
+        habilitarBotones(false);
+    }//GEN-LAST:event_btnAgregarActionPerformed
 
     /**
      * @param args the command line arguments
