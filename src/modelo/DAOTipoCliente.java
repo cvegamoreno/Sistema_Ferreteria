@@ -20,8 +20,9 @@ public class DAOTipoCliente {
     Connection con;
     PreparedStatement pst;
 
-    private final String SQLVER = "select * from tipocliente";
-    private final String SQLVER1 = "select numerocli from tipocliente";
+    private final String SQLVER = "SELECT * FROM tipocliente";
+    private final String SQLVER1 = "SELECT tipocli FROM tipocliente";
+    private final String SQLCODIGO = "SELECT tipo_cliente_id FROM tipocliente WHERE tipocli = ?";
 
     public DAOTipoCliente() {
         oCon = new Conexion();
@@ -61,10 +62,11 @@ public class DAOTipoCliente {
             ResultSet rs;
             pst = con.prepareStatement(SQLVER1);
             rs = pst.executeQuery();
-            String[] datos = new String[1];
+            
             while (rs.next()) {
-                datos[0] = rs.getString(1);
-                modeloTipoCliente.addElement(datos);
+                DTOTipoCliente objeto = new DTOTipoCliente();
+                objeto.setTipoCliente(rs.getString(1));
+                modeloTipoCliente.addElement(objeto.getTipoCliente());
             }
 
         } catch (SQLException ex) {
@@ -72,7 +74,27 @@ public class DAOTipoCliente {
         } finally {
             oCon.cerrarConexion();
         }
-
         return modeloTipoCliente;
+    }
+    
+    public int recuperarCodigo(DTOTipoCliente objeto){
+        int codigo=-1;
+        
+        try {
+            ResultSet rs;
+            pst = con.prepareStatement(SQLCODIGO);
+            pst.setString(1, objeto.getTipoCliente());
+            rs = pst.executeQuery();
+            
+            while (rs.next()) {
+                codigo = rs.getInt(1);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(DAOTipoCliente.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            oCon.cerrarConexion();
+        }
+        return codigo;
     }
 }
