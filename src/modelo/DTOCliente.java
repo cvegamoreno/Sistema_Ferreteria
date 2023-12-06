@@ -11,7 +11,7 @@ public class DTOCliente {
     private String direccion;
     private String telefono;
     private int idTipoCliente;
-    private int numeroCliente;
+    private String numeroCliente;
 
     public DTOCliente() {
     }
@@ -20,13 +20,13 @@ public class DTOCliente {
         this.idCliente = idCliente;
     }
 
-    public DTOCliente(int idCliente, String nombreCliente, String direccion, String telefono, int idTipoCliente, int numeroCliente) {
+    public DTOCliente(int idCliente, String nombreCliente, String numeroCliente, String direccion, String telefono, int idTipoCliente) {
         this.idCliente = idCliente;
         this.nombreCliente = nombreCliente;
         this.direccion = direccion;
         this.telefono = telefono;
         this.idTipoCliente = idTipoCliente;
-        this.numeroCliente = numeroCliente;
+        this.numeroCliente = numeroCliente;        
     }
 
     public int getIdCliente() {
@@ -44,7 +44,7 @@ public class DTOCliente {
     public void setNombreCliente(String nombreCliente) {
         this.nombreCliente = nombreCliente;
     }
-
+    
     public String getDireccion() {
         return direccion;
     }
@@ -68,13 +68,12 @@ public class DTOCliente {
     public void setIdTipoCliente(int idTipoCliente) {
         this.idTipoCliente = idTipoCliente;
     }
-
-    public int getNumeroCliente() {
+    
+    public String getNumeroCliente() {
         return numeroCliente;
     }
 
-    public void setNumeroCliente(int numeroCliente) {
+    public void setNumeroCliente(String numeroCliente) {
         this.numeroCliente = numeroCliente;
     }
-
 }

@@ -188,7 +188,7 @@ public class FrmProducto extends javax.swing.JFrame {
                 btnNuevoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 70, 20));
+        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, 70, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/fondo2.jpg"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 900, 600));
@@ -293,14 +293,7 @@ public class FrmProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        
-        txtidProducto.setText("");
-        txtnombreProd.setText("");
-        txtdescripcionprod.setText("");
-        txtprecioprod.setText("");
-        txtstock.setText("");
-        txtmedidas.setText("");
-        txtidProducto.requestFocus();
+        limpiar();
         habilitarBotones(true, false, false);
     }//GEN-LAST:event_btnNuevoActionPerformed
 

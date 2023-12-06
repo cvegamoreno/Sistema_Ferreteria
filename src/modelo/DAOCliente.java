@@ -38,7 +38,7 @@ public class DAOCliente {
             pst.setString(3, objeto.getDireccion());
             pst.setString(4, objeto.getTelefono());
             pst.setInt(5, objeto.getIdTipoCliente());
-            pst.setInt(6, objeto.getNumeroCliente());
+            pst.setString(6, objeto.getNumeroCliente());
             pst.executeUpdate();
 
         } catch (SQLException ex) {
@@ -58,7 +58,7 @@ public class DAOCliente {
             pst.setString(3, objeto.getDireccion());
             pst.setString(4, objeto.getTelefono());
             pst.setInt(5, objeto.getIdTipoCliente());
-            pst.setInt(6, objeto.getNumeroCliente());
+            pst.setString(6, objeto.getNumeroCliente());
             pst.setInt(7, objeto.getIdCliente());
             pst.executeUpdate();
 
