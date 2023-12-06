@@ -4,6 +4,13 @@
  */
 package vista;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.plaf.basic.BasicLookAndFeel;
+import javax.swing.plaf.metal.MetalLookAndFeel;
+
 /**
  *
  * @author PC_TONY
@@ -15,7 +22,7 @@ public class PrincipalForm extends javax.swing.JFrame {
      */
     public PrincipalForm() {
         initComponents();
-        
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -72,9 +79,11 @@ public class PrincipalForm extends javax.swing.JFrame {
         jLabel1.setBounds(0, 0, 820, 470);
 
         fileMenu.setBackground(new java.awt.Color(0, 204, 255));
+        fileMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/usuaprincipal.png"))); // NOI18N
         fileMenu.setMnemonic('f');
         fileMenu.setText("Registro");
 
+        opCargarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flecha-correcta.png"))); // NOI18N
         opCargarUsuario.setMnemonic('o');
         opCargarUsuario.setText("Registo Usuario");
         opCargarUsuario.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +96,7 @@ public class PrincipalForm extends javax.swing.JFrame {
         menuBar.add(fileMenu);
 
         editMenu.setBackground(new java.awt.Color(0, 204, 255));
+        editMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carro.png"))); // NOI18N
         editMenu.setMnemonic('e');
         editMenu.setText("Venta");
         editMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +105,7 @@ public class PrincipalForm extends javax.swing.JFrame {
             }
         });
 
+        opCargarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flecha-correcta.png"))); // NOI18N
         opCargarVenta.setMnemonic('t');
         opCargarVenta.setText("Realizar Venta");
         opCargarVenta.addActionListener(new java.awt.event.ActionListener() {
@@ -107,9 +118,11 @@ public class PrincipalForm extends javax.swing.JFrame {
         menuBar.add(editMenu);
 
         helpMenu.setBackground(new java.awt.Color(0, 204, 255));
+        helpMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/productos.png"))); // NOI18N
         helpMenu.setMnemonic('h');
         helpMenu.setText("Productos");
 
+        opCargarRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flecha-correcta.png"))); // NOI18N
         opCargarRegistro.setMnemonic('c');
         opCargarRegistro.setText("Registrar Producto");
         opCargarRegistro.addActionListener(new java.awt.event.ActionListener() {

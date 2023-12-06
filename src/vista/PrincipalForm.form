@@ -9,12 +9,18 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="cc" red="0" type="rgb"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/usuaprincipal.png"/>
+            </Property>
             <Property name="mnemonic" type="int" value="102"/>
             <Property name="text" type="java.lang.String" value="Registro"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="opCargarUsuario">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/flecha-correcta.png"/>
+                </Property>
                 <Property name="mnemonic" type="int" value="111"/>
                 <Property name="text" type="java.lang.String" value="Registo Usuario"/>
               </Properties>
@@ -29,6 +35,9 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="cc" red="0" type="rgb"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/carro.png"/>
+            </Property>
             <Property name="mnemonic" type="int" value="101"/>
             <Property name="text" type="java.lang.String" value="Venta"/>
           </Properties>
@@ -38,6 +47,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="opCargarVenta">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/flecha-correcta.png"/>
+                </Property>
                 <Property name="mnemonic" type="int" value="116"/>
                 <Property name="text" type="java.lang.String" value="Realizar Venta"/>
               </Properties>
@@ -52,12 +64,18 @@
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="cc" red="0" type="rgb"/>
             </Property>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/images/productos.png"/>
+            </Property>
             <Property name="mnemonic" type="int" value="104"/>
             <Property name="text" type="java.lang.String" value="Productos"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="opCargarRegistro">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/flecha-correcta.png"/>
+                </Property>
                 <Property name="mnemonic" type="int" value="99"/>
                 <Property name="text" type="java.lang.String" value="Registrar Producto"/>
               </Properties>
