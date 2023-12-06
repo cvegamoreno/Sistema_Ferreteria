@@ -29,13 +29,13 @@ public class UsuarioForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        btnSalir = new javax.swing.JButton();
-        btnIngresar = new javax.swing.JButton();
+        btnSalirlogin = new javax.swing.JButton();
+        btnIngresarlogin = new javax.swing.JButton();
         txtContra = new javax.swing.JPasswordField();
         txtUsuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 102));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -50,24 +50,28 @@ public class UsuarioForm extends javax.swing.JFrame {
         jLabel3.setText("Contraseña:");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, -1, -1));
 
-        btnSalir.setBackground(new java.awt.Color(255, 0, 0));
-        btnSalir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnSalir.setText("SALIR");
-        btnSalir.setPreferredSize(new java.awt.Dimension(84, 27));
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 150, 60));
-
-        btnIngresar.setBackground(new java.awt.Color(102, 255, 102));
-        btnIngresar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnIngresar.setText("INGRESAR");
-        btnIngresar.setRequestFocusEnabled(false);
-        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+        btnSalirlogin.setBackground(new java.awt.Color(255, 0, 0));
+        btnSalirlogin.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnSalirlogin.setText("SALIR");
+        btnSalirlogin.setPreferredSize(new java.awt.Dimension(84, 27));
+        btnSalirlogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarActionPerformed(evt);
+                btnSalirloginActionPerformed(evt);
             }
         });
-        getContentPane().add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 150, 60));
+        getContentPane().add(btnSalirlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 410, 150, 60));
 
-        txtContra.setBackground(new java.awt.Color(255, 255, 255));
+        btnIngresarlogin.setBackground(new java.awt.Color(102, 255, 102));
+        btnIngresarlogin.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnIngresarlogin.setText("INGRESAR");
+        btnIngresarlogin.setRequestFocusEnabled(false);
+        btnIngresarlogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarloginActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnIngresarlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 410, 150, 60));
+
         txtContra.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtContra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +80,6 @@ public class UsuarioForm extends javax.swing.JFrame {
         });
         getContentPane().add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 210, -1));
 
-        txtUsuario.setBackground(new java.awt.Color(255, 255, 255));
         txtUsuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 270, 210, -1));
 
@@ -90,10 +93,14 @@ public class UsuarioForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtContraActionPerformed
 
-    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+    private void btnIngresarloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarloginActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_btnIngresarActionPerformed
+    }//GEN-LAST:event_btnIngresarloginActionPerformed
+
+    private void btnSalirloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirloginActionPerformed
+       dispose();
+    }//GEN-LAST:event_btnSalirloginActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,8 +141,8 @@ public class UsuarioForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnIngresar;
-    private javax.swing.JButton btnSalir;
+    private javax.swing.JButton btnIngresarlogin;
+    private javax.swing.JButton btnSalirlogin;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

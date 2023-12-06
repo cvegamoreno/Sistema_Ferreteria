@@ -82,11 +82,13 @@ public class FrmProducto extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("ID Producto: ");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 19, -1, -1));
         getContentPane().add(txtidProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 19, 60, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Nombre Producto :");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(94, 78, -1, 30));
 
@@ -94,6 +96,7 @@ public class FrmProducto extends javax.swing.JFrame {
         getContentPane().add(txtnombreProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(274, 78, 390, 30));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Descripción :");
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 128, -1, 30));
 
@@ -101,11 +104,13 @@ public class FrmProducto extends javax.swing.JFrame {
         getContentPane().add(txtdescripcionprod, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 128, 390, 30));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Precio Unitario :");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 178, -1, 30));
         getContentPane().add(txtprecioprod, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 178, 120, 30));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Stock :");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 214, -1, 30));
 
@@ -116,6 +121,7 @@ public class FrmProducto extends javax.swing.JFrame {
         getContentPane().add(txtmedidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(272, 216, 120, 30));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Medidas :");
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(169, 214, -1, 30));
 
