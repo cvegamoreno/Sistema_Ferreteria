@@ -55,6 +55,11 @@ public class PrincipalForm extends javax.swing.JFrame {
         jTextField2.setForeground(new java.awt.Color(0, 102, 153));
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.setText("BIENVENIDO");
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
         desktopPane.add(jTextField2);
         jTextField2.setBounds(0, 0, 820, 60);
 
@@ -100,8 +105,6 @@ public class PrincipalForm extends javax.swing.JFrame {
         });
         desktopPane.add(btnIngresar);
         btnIngresar.setBounds(340, 170, 120, 50);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC_TONY\\Desktop\\fondoazul.jpg")); // NOI18N
         desktopPane.add(jLabel1);
         jLabel1.setBounds(0, 0, 820, 470);
 
@@ -220,6 +223,10 @@ public class PrincipalForm extends javax.swing.JFrame {
         btnIngresar.setBackground(new Color(0,102,153));
     }//GEN-LAST:event_btnIngresarMouseExited
 
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -253,7 +260,7 @@ public class PrincipalForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PrincipalForm().setVisible(true);
+                new UsuarioForm().setVisible(true);
             }
         });
     }

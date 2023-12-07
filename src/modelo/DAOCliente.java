@@ -48,7 +48,7 @@ public class DAOCliente {
             oCon.cerrarConexion();
         }
     }
-    
+
     public void editar(DTOCliente objeto) {
         try {
 
@@ -89,7 +89,6 @@ public class DAOCliente {
         DefaultTableModel modeloCliente = new DefaultTableModel();
 
         try {
-
             ResultSet rs;
             pst = con.prepareStatement(SQLVER);
             rs = pst.executeQuery();

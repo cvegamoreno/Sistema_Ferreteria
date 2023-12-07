@@ -4,6 +4,10 @@
  */
 package vista;
 
+import javax.swing.table.DefaultTableModel;
+import modelo.DAOUsuario;
+import modelo.DTOUsuario;
+
 /**
  *
  * @author PC_TONY
@@ -15,8 +19,30 @@ public class RegistrarUsuario extends javax.swing.JFrame {
      */
     public RegistrarUsuario() {
         initComponents();
+        verUsuario();
+        limpiar();
+        habilitarBotones(false, false, true, false);
     }
-
+    
+    void limpiar(){
+        txtCoreo.setText("");
+        txtContra.setText("");
+        txtCoreo.requestFocus();
+    }
+    
+    void verUsuario(){
+        DefaultTableModel modelo;
+        DAOUsuario objetoD = new DAOUsuario();
+        modelo = objetoD.verUsuario();
+        tblUsuario.setModel(modelo);  
+    }
+    
+    void habilitarBotones(boolean correo, boolean pass, boolean n,boolean g){
+        txtCoreo.setEnabled(correo);
+        txtContra.setEnabled(pass);
+        btnNuevo.setEnabled(n);
+        btnGuardar.setEnabled(g);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,15 +75,34 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel2.setText("Contraseña: ");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
+
+        txtCoreo.setEnabled(false);
+        txtCoreo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCoreoActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtCoreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, 310, 40));
+
+        txtContra.setEnabled(false);
         getContentPane().add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 160, 310, 40));
 
         btnGuardar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, -1, -1));
 
         btnNuevo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 240, 80, -1));
 
         btnSalir.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -83,15 +128,11 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tblUsuario);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, 570, 150));
-
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC_TONY\\Desktop\\imagenusuario.jpg")); // NOI18N
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, 190));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel3.setText("REGISTRAR USUARIO");
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 30, -1, -1));
-
-        jLabel4.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC_TONY\\Desktop\\fondousu.jpg")); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 550));
 
         pack();
@@ -100,6 +141,37 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void txtCoreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCoreoActionPerformed
+        
+    }//GEN-LAST:event_txtCoreoActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        verUsuario();
+        limpiar();
+        habilitarBotones(true, true, false, true);
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        String user, password;
+        int user_id;
+        
+        user = txtCoreo.getText();
+        password = txtContra.getText();
+        //user_id = Integer.parseInt(txtstock.getText());
+        
+        DTOUsuario objeto= new DTOUsuario();
+        objeto.setNombreUsu(user);
+        objeto.setContrasenaUsu(password);
+        //objeto.setIdUsuario(user_id);
+        
+        DAOUsuario objetoD=new DAOUsuario();
+        objetoD.agregar(objeto);
+        
+        verUsuario();
+        limpiar();
+        habilitarBotones(true, true, true, false);
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
      * @param args the command line arguments

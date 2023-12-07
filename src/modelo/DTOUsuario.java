@@ -11,7 +11,7 @@ package modelo;
 public class DTOUsuario {
     private int idUsuario;
     private String nombreUsu;
-    private String contraseñaUsu;
+    private String contrasenaUsu;
 
     public DTOUsuario() {
     }
@@ -20,10 +20,10 @@ public class DTOUsuario {
         this.idUsuario = idUsuario;
     }
 
-    public DTOUsuario(int idUsuario, String nombreUsu, String contraseñaUsu) {
+    public DTOUsuario(int idUsuario, String nombreUsu, String contrasenaUsu) {
         this.idUsuario = idUsuario;
         this.nombreUsu = nombreUsu;
-        this.contraseñaUsu = contraseñaUsu;
+        this.contrasenaUsu = contrasenaUsu;
     }
 
     public int getIdUsuario() {
@@ -42,12 +42,12 @@ public class DTOUsuario {
         this.nombreUsu = nombreUsu;
     }
 
-    public String getContraseñaUsu() {
-        return contraseñaUsu;
+    public String getContrasenaUsu() {
+        return contrasenaUsu;
     }
 
-    public void setContraseñaUsu(String contraseñaUsu) {
-        this.contraseñaUsu = contraseñaUsu;
+    public void setContrasenaUsu(String contrasenaUsu) {
+        this.contrasenaUsu = contrasenaUsu;
     }
 
     

@@ -5,6 +5,10 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+import modelo.DAOUsuario;
+import modelo.DTOUsuario;
 
 /**
  *
@@ -18,6 +22,12 @@ public class UsuarioForm extends javax.swing.JFrame {
     public UsuarioForm() {
         initComponents();
         setLocationRelativeTo(null);
+    }
+
+    void limpiar() {
+        txtUsuario.setText("");
+        txtContra.setText("");
+        txtUsuario.requestFocus();
     }
 
     /**
@@ -34,6 +44,7 @@ public class UsuarioForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btnSalirlogin = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
         btnIngresarlogin = new javax.swing.JButton();
         txtContra = new javax.swing.JPasswordField();
         txtUsuario = new javax.swing.JTextField();
@@ -92,6 +103,21 @@ public class UsuarioForm extends javax.swing.JFrame {
         });
         getContentPane().add(btnSalirlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 470, 150, 60));
 
+        jLabel12.setText("No tengo una cuenta");
+        jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel12MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel12MouseExited(evt);
+            }
+        });
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 560, -1, -1));
+
         btnIngresarlogin.setBackground(new java.awt.Color(0, 153, 255));
         btnIngresarlogin.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnIngresarlogin.setForeground(new java.awt.Color(255, 255, 255));
@@ -121,11 +147,21 @@ public class UsuarioForm extends javax.swing.JFrame {
                 txtContraActionPerformed(evt);
             }
         });
+        txtContra.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtContraKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 250, 40));
 
         txtUsuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtUsuario.setBorder(new javax.swing.border.MatteBorder(null));
+        txtUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtUsuarioKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 250, 40));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tornillo.png"))); // NOI18N
@@ -155,12 +191,34 @@ public class UsuarioForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnIngresarloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarloginActionPerformed
-        // TODO add your handling code here:
-        
+        String user, password;
+
+        user = txtUsuario.getText();
+        password = txtContra.getText();
+
+        DTOUsuario objeto = new DTOUsuario();
+        objeto.setNombreUsu(user);
+        objeto.setContrasenaUsu(password);
+
+        DAOUsuario objetoD = new DAOUsuario();
+
+        if (objetoD.verificarCredenciales(objeto)) {
+            // Credenciales válidas
+            JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+
+            PrincipalForm ventanaPrincipal = new PrincipalForm();
+            ventanaPrincipal.setVisible(true);
+
+            this.dispose();
+        } else {
+            // Credenciales inválidas
+            JOptionPane.showMessageDialog(null, "Credenciales incorrectas. Inicio de sesión fallido.", "Error", JOptionPane.ERROR_MESSAGE);
+
+        }
     }//GEN-LAST:event_btnIngresarloginActionPerformed
 
     private void btnSalirloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirloginActionPerformed
-       dispose();
+        dispose();
     }//GEN-LAST:event_btnSalirloginActionPerformed
 
     private void txtContraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraActionPerformed
@@ -168,28 +226,53 @@ public class UsuarioForm extends javax.swing.JFrame {
     }//GEN-LAST:event_txtContraActionPerformed
 
     private void btnSalirloginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirloginMousePressed
-        
+
     }//GEN-LAST:event_btnSalirloginMousePressed
 
     private void btnSalirloginMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirloginMouseReleased
-        
+
     }//GEN-LAST:event_btnSalirloginMouseReleased
 
     private void btnSalirloginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirloginMouseEntered
-        btnSalirlogin.setBackground(new Color (255, 69, 69 ));
+        btnSalirlogin.setBackground(new Color(255, 69, 69));
     }//GEN-LAST:event_btnSalirloginMouseEntered
 
     private void btnSalirloginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirloginMouseExited
-        btnSalirlogin.setBackground(new Color(0,153,255));
+        btnSalirlogin.setBackground(new Color(0, 153, 255));
     }//GEN-LAST:event_btnSalirloginMouseExited
 
     private void btnIngresarloginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarloginMouseEntered
-        btnIngresarlogin.setBackground(new Color(107, 195, 24 ));
+        btnIngresarlogin.setBackground(new Color(107, 195, 24));
     }//GEN-LAST:event_btnIngresarloginMouseEntered
 
     private void btnIngresarloginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarloginMouseExited
-        btnIngresarlogin.setBackground(new Color(0,153,255));
+        btnIngresarlogin.setBackground(new Color(0, 153, 255));
     }//GEN-LAST:event_btnIngresarloginMouseExited
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        new RegistrarUsuario().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jLabel12MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseEntered
+        jLabel12.setForeground(Color.BLUE);
+    }//GEN-LAST:event_jLabel12MouseEntered
+
+    private void jLabel12MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseExited
+        jLabel12.setForeground(Color.BLACK);
+    }//GEN-LAST:event_jLabel12MouseExited
+
+    private void txtUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUsuarioKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnIngresarloginActionPerformed(null);
+        }
+    }//GEN-LAST:event_txtUsuarioKeyPressed
+
+    private void txtContraKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContraKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnIngresarloginActionPerformed(null);
+        }
+    }//GEN-LAST:event_txtContraKeyPressed
 
     /**
      * @param args the command line arguments
@@ -235,6 +318,7 @@ public class UsuarioForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

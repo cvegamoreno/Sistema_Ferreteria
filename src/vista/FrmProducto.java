@@ -31,19 +31,18 @@ public class FrmProducto extends javax.swing.JFrame {
         txtmedidas.setText("");
         txtidProducto.requestFocus();
     }
+    
     void verProducto(){
         DefaultTableModel modeloproducto;
         DAOProducto oDProd = new DAOProducto();
         modeloproducto = oDProd.verProducto();
-        tblproducto.setModel(modeloproducto);
-        
+        tblproducto.setModel(modeloproducto);  
     }
     
     void habilitarBotones(boolean a,boolean e,boolean el){
         btnAgregar.setEnabled(a);
         btnEditar.setEnabled(e);
-        btnEliminar.setEnabled(el);
-        
+        btnEliminar.setEnabled(el); 
     }
 
     /**

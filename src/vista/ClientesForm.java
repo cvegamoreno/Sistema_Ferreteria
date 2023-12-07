@@ -21,7 +21,7 @@ public class ClientesForm extends javax.swing.JFrame {
         initComponents();
         verCliente();
         verTipoCliente();
-        habilitarBotones(false,true, false, false);
+        habilitarBotones(false,true, false, false, false, false, false, false, false, false);
     }
 
     void limpiar() {
@@ -40,11 +40,17 @@ public class ClientesForm extends javax.swing.JFrame {
         tblCliente.setModel(modelocliente);
     }
 
-    void habilitarBotones(boolean a, boolean b, boolean ed, boolean el) {
+    void habilitarBotones(boolean a, boolean b, boolean ed, boolean el, boolean id, boolean nom, boolean dir, boolean tel, boolean tip, boolean num) {
         btnAgregar.setEnabled(a);
         btnBuscar.setEnabled(b);
         btnEditar.setEnabled(ed);
         btnEliminar.setEnabled(el);
+        txtId.setEnabled(id);
+        txtNombre2.setEnabled(nom);
+        txtDireccion.setEnabled(dir);
+        txtTelefono.setEnabled(tel);
+        CboTipoCliente.setEnabled(tip);
+        txtNumeroCliente.setEnabled(num);
     }
     
     void verTipoCliente(){
@@ -138,20 +144,24 @@ public class ClientesForm extends javax.swing.JFrame {
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
                 {null, null, null, null, null, null}
             },
             new String [] {
                 "ID", "Nombre / Razon Social", "RUC", "DNI", "Direccion", "Telefono"
             }
         ));
+        tblCliente.setColumnSelectionAllowed(true);
         tblCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblClienteMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tblCliente);
+        tblCliente.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 890, 190));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 890, 190));
 
         btnEliminar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnEliminar.setText("Eliminar");
@@ -290,7 +300,7 @@ public class ClientesForm extends javax.swing.JFrame {
 
         verCliente();
         limpiar();
-        habilitarBotones(false,false, false, false);
+        habilitarBotones(false,true, false, false, false, false, false, false, false, false);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void CboTipoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CboTipoClienteActionPerformed
@@ -299,7 +309,7 @@ public class ClientesForm extends javax.swing.JFrame {
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         limpiar();
-        habilitarBotones(true,true, false, false);
+        habilitarBotones(true,true, false, false,true, true, true, true, true, true);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnSalir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir2ActionPerformed
@@ -324,11 +334,27 @@ public class ClientesForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnEditarActionPerformed
 
+    }//GEN-LAST:event_btnEditarActionPerformed
+    
     private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
-        habilitarBotones(false, true, true, true);
+        int fila;
+        fila = tblCliente.getSelectedRow();
+        String IdCliente,NombreCliente,Direccion,Telefono,TipoCliente,NumeroCliente;
+        IdCliente = (String) tblCliente.getValueAt(fila,0);
+        NombreCliente = (String) tblCliente.getValueAt(fila,1);
+        Direccion = (String) tblCliente.getValueAt(fila,2);
+        Telefono = (String) tblCliente.getValueAt(fila,3);
+        TipoCliente = (String) tblCliente.getValueAt(fila,4);
+        NumeroCliente = (String) tblCliente.getValueAt(fila,5);
+        
+        txtId.setText(IdCliente);
+        txtNombre2.setText(NombreCliente);
+        txtDireccion.setText(Direccion);
+        txtTelefono.setText(Telefono);
+        CboTipoCliente.setSelectedItem(TipoCliente);
+        txtNumeroCliente.setText(NumeroCliente);
+        habilitarBotones(false, true, true, true, true, true, true, true, true, true);
     }//GEN-LAST:event_tblClienteMouseClicked
 
     /**
