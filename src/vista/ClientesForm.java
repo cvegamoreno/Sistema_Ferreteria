@@ -21,6 +21,7 @@ public class ClientesForm extends javax.swing.JFrame {
         initComponents();
         verCliente();
         verTipoCliente();
+        habilitarBotones(false,true, false, false);
     }
 
     void limpiar() {
@@ -39,8 +40,11 @@ public class ClientesForm extends javax.swing.JFrame {
         tblCliente.setModel(modelocliente);
     }
 
-    void habilitarBotones(boolean a) {
+    void habilitarBotones(boolean a, boolean b, boolean ed, boolean el) {
         btnAgregar.setEnabled(a);
+        btnBuscar.setEnabled(b);
+        btnEditar.setEnabled(ed);
+        btnEliminar.setEnabled(el);
     }
     
     void verTipoCliente(){
@@ -65,14 +69,17 @@ public class ClientesForm extends javax.swing.JFrame {
         txtNombre = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         btnSalir = new javax.swing.JButton();
+        btnEditar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCliente = new javax.swing.JTable();
+        btnEliminar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         txtId = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtNombre2 = new javax.swing.JTextField();
+        btnNuevo = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtNumeroCliente = new javax.swing.JTextField();
@@ -93,18 +100,32 @@ public class ClientesForm extends javax.swing.JFrame {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Nombre de la empresa:");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, -1, -1));
         jPanel1.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 430, 30));
 
         btnBuscar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnBuscar.setText("Buscar");
-        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, -1, 30));
+        jPanel1.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 160, -1, -1));
 
         btnSalir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         btnSalir.setText("Salir");
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 160, 70, 30));
+        btnSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalirActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 160, 70, -1));
+
+        btnEditar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnEditar.setText("Editar");
+        btnEditar.setMargin(new java.awt.Insets(2, 2, 3, 2));
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, 80, -1));
 
         tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,9 +144,24 @@ public class ClientesForm extends javax.swing.JFrame {
                 "ID", "Nombre / Razon Social", "RUC", "DNI", "Direccion", "Telefono"
             }
         ));
+        tblCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblClienteMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblCliente);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 890, 190));
+
+        btnEliminar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnEliminar.setText("Eliminar");
+        btnEliminar.setMargin(new java.awt.Insets(2, 2, 3, 2));
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 160, 90, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/fondo2.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 560));
@@ -145,6 +181,15 @@ public class ClientesForm extends javax.swing.JFrame {
 
         txtNombre2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jPanel2.add(txtNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, 390, 30));
+
+        btnNuevo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 100, 90, 30));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel6.setText("Tipo :");
@@ -182,6 +227,11 @@ public class ClientesForm extends javax.swing.JFrame {
 
         btnSalir2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnSalir2.setText("Salir");
+        btnSalir2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSalir2ActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnSalir2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, 110, 50));
 
         CboTipoCliente.addActionListener(new java.awt.event.ActionListener() {
@@ -211,35 +261,75 @@ public class ClientesForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-        int idCliente, idTipoCliente, numeroCliente;
-        String nombreCliente, direccion, telefono;
+        int idCliente, codTipoCliente;
+        String nombreCliente, dniruc, direccion, telefono, tipoCliente;
 
         idCliente = Integer.parseInt(txtId.getText());
         nombreCliente = txtNombre2.getText();
-        idTipoCliente = Integer.parseInt(txtNumeroCliente.getText());
-        numeroCliente = Double.parseDouble(txtDniRuc.getText());
         direccion = txtDireccion.getText();
         telefono = txtTelefono.getText();
-
+        dniruc = txtNumeroCliente.getText();
+        
+        tipoCliente = (String)CboTipoCliente.getSelectedItem();
+        DTOTipoCliente objetoC = new DTOTipoCliente();
+        objetoC.setTipoCliente(tipoCliente);
+        
+        DAOTipoCliente objetoD = new DAOTipoCliente();
+        codTipoCliente = objetoD.recuperarCodigo(objetoC);
+        
         DTOCliente objeto = new DTOCliente();
         objeto.setIdCliente(idCliente);
         objeto.setNombreCliente(nombreCliente);
         objeto.setDireccion(direccion);
         objeto.setTelefono(telefono);
-        objeto.setIdTipoCliente(idTipoCliente);
-        objeto.setNumeroCliente(numeroCliente);
+        objeto.setIdTipoCliente(codTipoCliente);
+        objeto.setNumeroCliente(dniruc);
 
         DAOCliente oDCli = new DAOCliente();
         oDCli.agregar(objeto);
 
         verCliente();
         limpiar();
-        habilitarBotones(false);
+        habilitarBotones(false,false, false, false);
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void CboTipoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CboTipoClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_CboTipoClienteActionPerformed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        limpiar();
+        habilitarBotones(true,true, false, false);
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnSalir2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalir2ActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnSalir2ActionPerformed
+
+    private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        int idCliente;
+        idCliente = Integer.parseInt(txtId.getText());
+        
+        DTOCliente objeto = new DTOCliente(idCliente);
+        
+        DAOCliente objetoD= new DAOCliente();
+        objetoD.eliminar(objeto);
+        
+        verCliente();
+        limpiar();
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarActionPerformed
+
+    private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
+        habilitarBotones(false, true, true, true);
+    }//GEN-LAST:event_tblClienteMouseClicked
 
     /**
      * @param args the command line arguments
@@ -283,6 +373,9 @@ public class ClientesForm extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> CboTipoCliente;
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscar;
+    private javax.swing.JButton btnEditar;
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnSalir;
     private javax.swing.JButton btnSalir2;
     private javax.swing.JLabel jLabel1;

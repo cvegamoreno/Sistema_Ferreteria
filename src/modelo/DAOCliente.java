@@ -19,10 +19,10 @@ public class DAOCliente {
     Connection con;
     PreparedStatement pst;
 
-    private final String SQLINSERTAR = "insert into clientes(cliente_id, nombre, direccion, telefono, tipo_cliente_id, numerocli) values(?,?,?,?,?,?)";
-    private final String SQLEDITAR = "update clientes SET cliente_id= ?, nombre =?, direccion=?, telefono =?, tipo_cliente_id =?, numerocli =? WHERE cliente_id =?";
+    private final String SQLINSERTAR = "INSERT INTO clientes(cliente_id, nombre, direccion, telefono, tipo_cliente_id, numerocli) values(?,?,?,?,?,?)";
+    private final String SQLEDITAR = "UPDATE clientes SET cliente_id= ?, nombre =?, direccion=?, telefono =?, tipo_cliente_id =?, numerocli =? WHERE cliente_id =?";
     private final String SQLELIMINAR = "DELETE FROM clientes WHERE cliente_id=?";
-    private final String SQLVER = "select * from clientes";
+    private final String SQLVER = "SELECT cliente_id, nombre, direccion, telefono, tipocli, numerocli FROM clientes, tipocliente WHERE tipocliente.tipo_cliente_id = clientes.tipo_cliente_id";
 
     public DAOCliente() {
         oCon = new Conexion();
@@ -101,7 +101,7 @@ public class DAOCliente {
                 datos[1] = rs.getString(2);
                 datos[2] = rs.getString(3);
                 datos[3] = rs.getString(4);
-                datos[4] = String.valueOf(rs.getInt(5));
+                datos[4] = rs.getString(5);
                 datos[5] = rs.getString(6);
                 modeloCliente.addRow(datos);
             }
