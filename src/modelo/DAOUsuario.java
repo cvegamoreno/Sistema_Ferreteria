@@ -19,9 +19,9 @@ public class DAOUsuario {
     Connection con;
     PreparedStatement pst;
 
-    private final String SQLINSERTAR = "INSERT INTO usuario(usuario_id, nombre_usuario, contrasena) values(?,?,?,?)";
-    private final String SQLEDITAR = "UPDATE usuario SET usuario_id= ?, nombre_usuario =?, contrasena=? WHERE nombre_usuario =?";
-    private final String SQLELIMINAR = "DELETE FROM usuario WHERE nombre_usuario =?";
+    private final String SQLINSERTAR = "INSERT INTO usuario(nombre_usuario, contrasena) values(?,?)";
+    private final String SQLEDITAR = "UPDATE usuario SET nombre_usuario =?, contrasena=? WHERE usuario_id =?";
+    private final String SQLELIMINAR = "DELETE FROM usuario WHERE usuario_id =?";
     private final String SQLVER = "SELECT * from usuario";
     private final String SQLLOGIN = "SELECT contrasena FROM usuario WHERE nombre_usuario = ?";
 
@@ -38,9 +38,8 @@ public class DAOUsuario {
                 return; // Sale del método si hay campos vacíos
             }
             pst = con.prepareStatement(SQLINSERTAR);
-            pst.setInt(1, objeto.getIdUsuario());
-            pst.setString(2, objeto.getNombreUsu());
-            pst.setString(3, objeto.getContrasenaUsu());
+            pst.setString(1, objeto.getNombreUsu());
+            pst.setString(2, objeto.getContrasenaUsu());
             pst.executeUpdate();
 
         } catch (SQLException ex) {

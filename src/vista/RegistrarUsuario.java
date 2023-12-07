@@ -154,7 +154,6 @@ public class RegistrarUsuario extends javax.swing.JFrame {
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
         String user, password;
-        int user_id;
         
         user = txtCoreo.getText();
         password = txtContra.getText();
@@ -170,7 +169,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         
         verUsuario();
         limpiar();
-        habilitarBotones(true, true, true, false);
+        habilitarBotones(false, false, true, false);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
