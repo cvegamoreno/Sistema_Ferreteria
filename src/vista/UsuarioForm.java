@@ -58,17 +58,18 @@ public class UsuarioForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(102, 102, 102));
+        setUndecorated(true);
         setResizable(false);
         setSize(new java.awt.Dimension(720, 720));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setText("Usuario:");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 210, -1, -1));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 200, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setText("Contraseña:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 300, -1, -1));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 290, -1, -1));
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/entrar.png"))); // NOI18N
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 390, 30, 60));
@@ -76,9 +77,7 @@ public class UsuarioForm extends javax.swing.JFrame {
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cerrar-sesion-chico.png"))); // NOI18N
         getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 470, 30, 60));
 
-        btnSalirlogin.setBackground(new java.awt.Color(0, 153, 255));
         btnSalirlogin.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnSalirlogin.setForeground(new java.awt.Color(255, 255, 255));
         btnSalirlogin.setText("SALIR");
         btnSalirlogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSalirlogin.setPreferredSize(new java.awt.Dimension(84, 27));
@@ -103,6 +102,7 @@ public class UsuarioForm extends javax.swing.JFrame {
         });
         getContentPane().add(btnSalirlogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 470, 150, 60));
 
+        jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel12.setText("No tengo una cuenta");
         jLabel12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -118,9 +118,7 @@ public class UsuarioForm extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 560, -1, -1));
 
-        btnIngresarlogin.setBackground(new java.awt.Color(0, 153, 255));
         btnIngresarlogin.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnIngresarlogin.setForeground(new java.awt.Color(255, 255, 255));
         btnIngresarlogin.setText("INGRESAR");
         btnIngresarlogin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnIngresarlogin.setRequestFocusEnabled(false);
@@ -152,7 +150,7 @@ public class UsuarioForm extends javax.swing.JFrame {
                 txtContraKeyPressed(evt);
             }
         });
-        getContentPane().add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 250, 40));
+        getContentPane().add(txtContra, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, 250, 40));
 
         txtUsuario.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtUsuario.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -162,7 +160,7 @@ public class UsuarioForm extends javax.swing.JFrame {
                 txtUsuarioKeyPressed(evt);
             }
         });
-        getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 250, 40));
+        getContentPane().add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 240, 250, 40));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/tornillo.png"))); // NOI18N
         getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 90, 70));
@@ -173,8 +171,8 @@ public class UsuarioForm extends javax.swing.JFrame {
         jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/llave.png"))); // NOI18N
         getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 500, -1, 90));
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/usuario.png"))); // NOI18N
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 50, 130, 150));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/usuario b.png"))); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 30, 130, 150));
 
         jLabel2.setBackground(new java.awt.Color(250, 250, 250));
         jLabel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -204,7 +202,7 @@ public class UsuarioForm extends javax.swing.JFrame {
 
         if (objetoD.verificarCredenciales(objeto)) {
             // Credenciales válidas
-            JOptionPane.showMessageDialog(null, "Inicio de sesión exitoso.", "Mensaje", JOptionPane.INFORMATION_MESSAGE);
+            
 
             PrincipalForm ventanaPrincipal = new PrincipalForm();
             ventanaPrincipal.setVisible(true);
@@ -238,15 +236,15 @@ public class UsuarioForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirloginMouseEntered
 
     private void btnSalirloginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirloginMouseExited
-        btnSalirlogin.setBackground(new Color(0, 153, 255));
+        btnSalirlogin.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_btnSalirloginMouseExited
 
     private void btnIngresarloginMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarloginMouseEntered
-        btnIngresarlogin.setBackground(new Color(107, 195, 24));
+        btnIngresarlogin.setBackground(new Color(28, 182, 249  ));
     }//GEN-LAST:event_btnIngresarloginMouseEntered
 
     private void btnIngresarloginMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarloginMouseExited
-        btnIngresarlogin.setBackground(new Color(0, 153, 255));
+        btnIngresarlogin.setBackground(new Color(255,255,255));
     }//GEN-LAST:event_btnIngresarloginMouseExited
 
     private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked

@@ -26,7 +26,6 @@ public class VentaForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        txtId = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtCliente = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -61,12 +60,11 @@ public class VentaForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 50, 30));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Cliente: ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 60, 30));
-        getContentPane().add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 280, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 60, 30));
+        getContentPane().add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 350, 30));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Direccion : ");
@@ -77,12 +75,12 @@ public class VentaForm extends javax.swing.JFrame {
         getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 90, 30));
 
         cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boleta", "Factura" }));
-        getContentPane().add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 50, 180, -1));
+        getContentPane().add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 100, 30));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Fecha: ");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 139, 70, 30));
-        getContentPane().add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 140, 180, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 90, 70, 30));
+        getContentPane().add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 90, 180, 30));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Producto: ");
@@ -90,7 +88,7 @@ public class VentaForm extends javax.swing.JFrame {
         getContentPane().add(txtIdproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 60, 30));
 
         btnBuscarproducto.setText("Buscar");
-        getContentPane().add(btnBuscarproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 60, 30));
+        getContentPane().add(btnBuscarproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 80, 30));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setText("Stock : ");
@@ -100,13 +98,13 @@ public class VentaForm extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setText("Cantidad: ");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 219, 70, 30));
-        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 220, 70, 30));
+        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 220, 70, 30));
 
         btnAgragar.setText("Agregar");
-        getContentPane().add(btnAgragar, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 220, 60, 30));
+        getContentPane().add(btnAgragar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 220, 90, 30));
 
         btnEliminar.setText("Eliminar");
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 220, 60, 30));
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 220, 90, 30));
 
         tblVentatotal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -121,15 +119,15 @@ public class VentaForm extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblVentatotal);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 840, 140));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 910, 150));
 
         btnNuevo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnNuevo.setText("NUEVO");
-        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, -1, -1));
+        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, -1, -1));
 
         btnRegistrar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnRegistrar.setText("REGISTRAR");
-        getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 460, -1, -1));
+        getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, -1, -1));
 
         btnSalir.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnSalir.setText("SALIR");
@@ -138,31 +136,28 @@ public class VentaForm extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, 100, -1));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 510, 100, -1));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel7.setText("SUB. TOTAL");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, -1, -1));
-        getContentPane().add(txtSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, 70, -1));
+        jLabel7.setText("SUB. TOTAL:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 480, -1, -1));
+        getContentPane().add(txtSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 470, 110, 30));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel8.setText("IGV");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, -1, -1));
-        getContentPane().add(txtIgv, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 460, 80, -1));
+        jLabel8.setText("IGV:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 520, -1, -1));
+        getContentPane().add(txtIgv, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 510, 110, 30));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel9.setText("TOTAL ");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 460, -1, -1));
-        getContentPane().add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 460, 70, -1));
-        getContentPane().add(txtSerie, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 84, 180, 30));
+        jLabel9.setText("TOTAL: ");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 560, -1, -1));
+        getContentPane().add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 550, 110, 30));
+        getContentPane().add(txtSerie, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 180, 30));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("REGISTRO DE VENTA");
         getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/fondo2.jpg"))); // NOI18N
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 550));
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 970, 620));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -235,7 +230,6 @@ public class VentaForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtCliente;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtFecha;
-    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtIdproducto;
     private javax.swing.JTextField txtIgv;
     private javax.swing.JTextField txtSerie;

@@ -38,8 +38,7 @@ public class PrincipalForm extends javax.swing.JFrame {
         desktopPane = new javax.swing.JDesktopPane();
         jTextField2 = new javax.swing.JTextField();
         btnSalir = new javax.swing.JButton();
-        btnIngresar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         opCargarUsuario = new javax.swing.JMenuItem();
@@ -47,21 +46,24 @@ public class PrincipalForm extends javax.swing.JFrame {
         opCargarVenta = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         opCargarRegistro = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        opRegistrocli = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTextField2.setBackground(new java.awt.Color(236, 236, 236));
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 102, 153));
+        jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(0, 153, 153));
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jTextField2.setText("BIENVENIDO");
+        jTextField2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
         desktopPane.add(jTextField2);
-        jTextField2.setBounds(0, 0, 820, 60);
+        jTextField2.setBounds(0, 0, 820, 80);
 
         btnSalir.setBackground(new java.awt.Color(0, 102, 153));
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -83,30 +85,13 @@ public class PrincipalForm extends javax.swing.JFrame {
             }
         });
         desktopPane.add(btnSalir);
-        btnSalir.setBounds(340, 240, 120, 50);
+        btnSalir.setBounds(680, 410, 120, 50);
 
-        btnIngresar.setBackground(new java.awt.Color(0, 102, 153));
-        btnIngresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnIngresar.setForeground(new java.awt.Color(255, 255, 255));
-        btnIngresar.setText("LOGIN");
-        btnIngresar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnIngresar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnIngresarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnIngresarMouseExited(evt);
-            }
-        });
-        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIngresarActionPerformed(evt);
-            }
-        });
-        desktopPane.add(btnIngresar);
-        btnIngresar.setBounds(340, 170, 120, 50);
-        desktopPane.add(jLabel1);
-        jLabel1.setBounds(0, 0, 820, 470);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/FONDITO.jpg"))); // NOI18N
+        desktopPane.add(jLabel2);
+        jLabel2.setBounds(0, 0, 820, 470);
+
+        menuBar.setBorder(null);
 
         fileMenu.setBackground(new java.awt.Color(0, 204, 255));
         fileMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/usuaprincipal.png"))); // NOI18N
@@ -164,6 +149,20 @@ public class PrincipalForm extends javax.swing.JFrame {
 
         menuBar.add(helpMenu);
 
+        jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cliente.png"))); // NOI18N
+        jMenu1.setText("Clientes");
+
+        opRegistrocli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flecha-correcta.png"))); // NOI18N
+        opRegistrocli.setText("Registro deClientes");
+        opRegistrocli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opRegistrocliActionPerformed(evt);
+            }
+        });
+        jMenu1.add(opRegistrocli);
+
+        menuBar.add(jMenu1);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -199,33 +198,26 @@ public class PrincipalForm extends javax.swing.JFrame {
         frmProducto.setVisible(true);
     }//GEN-LAST:event_opCargarRegistroActionPerformed
 
-    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
-        new UsuarioForm().setVisible(true);
-    }//GEN-LAST:event_btnIngresarActionPerformed
-
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         System.exit(0);
     }//GEN-LAST:event_btnSalirActionPerformed
 
-    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
-       btnSalir.setBackground(new Color(255, 69, 69) );
-    }//GEN-LAST:event_btnSalirMouseEntered
-
     private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
-       btnSalir.setBackground(new Color(0,102,153) );
+        btnSalir.setBackground(new Color(0,102,153) );
     }//GEN-LAST:event_btnSalirMouseExited
 
-    private void btnIngresarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseEntered
-       btnIngresar.setBackground(new Color(27, 169, 215 ));
-    }//GEN-LAST:event_btnIngresarMouseEntered
-
-    private void btnIngresarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIngresarMouseExited
-        btnIngresar.setBackground(new Color(0,102,153));
-    }//GEN-LAST:event_btnIngresarMouseExited
+    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
+        btnSalir.setBackground(new Color(255, 69, 69) );
+    }//GEN-LAST:event_btnSalirMouseEntered
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void opRegistrocliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opRegistrocliActionPerformed
+        ClientesForm clientesForm = new ClientesForm();
+        clientesForm.setVisible(true);
+    }//GEN-LAST:event_opRegistrocliActionPerformed
 
     /**
      * @param args the command line arguments
@@ -266,18 +258,19 @@ public class PrincipalForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnIngresar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu editMenu;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem opCargarRegistro;
     private javax.swing.JMenuItem opCargarUsuario;
     private javax.swing.JMenuItem opCargarVenta;
+    private javax.swing.JMenuItem opRegistrocli;
     // End of variables declaration//GEN-END:variables
 
     private static class Product {
