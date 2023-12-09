@@ -4,6 +4,8 @@
  */
 package vista;
 
+import java.awt.Color;
+
 /**
  *
  * @author PC_TONY
@@ -15,6 +17,7 @@ public class VentaForm extends javax.swing.JFrame {
      */
     public VentaForm() {
         initComponents();
+        setLocationRelativeTo(null);
     }
 
     /**
@@ -26,6 +29,9 @@ public class VentaForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel12 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        btnEditar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtCliente = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -59,52 +65,113 @@ public class VentaForm extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jLabel12.setText("N° Documento:");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 110, 30));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 240, 30));
+
+        btnEditar.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/editar2.png"))); // NOI18N
+        btnEditar.setText(" Editar");
+        btnEditar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEditarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEditarMouseExited(evt);
+            }
+        });
+        getContentPane().add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 220, 80, 30));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel1.setText("Cliente: ");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 90, 60, 30));
-        getContentPane().add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 350, 30));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 60, 30));
+        getContentPane().add(txtCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 240, 30));
 
         jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel2.setText("Direccion : ");
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 90, 30));
-        getContentPane().add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 350, 30));
+        getContentPane().add(txtDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 240, 30));
 
-        btnBuscar.setText("Buscar");
-        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 90, 90, 30));
+        btnBuscar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
+        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBuscarMouseExited(evt);
+            }
+        });
+        getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 50, 30));
 
         cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boleta", "Factura" }));
-        getContentPane().add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 100, 30));
+        getContentPane().add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 80, 30));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel3.setText("Fecha: ");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 90, 70, 30));
-        getContentPane().add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 90, 180, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 110, 70, 30));
+        getContentPane().add(txtFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 110, 80, 30));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Producto: ");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 219, 80, 30));
-        getContentPane().add(txtIdproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 60, 30));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 80, 30));
+        getContentPane().add(txtIdproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 240, 30));
 
-        btnBuscarproducto.setText("Buscar");
-        getContentPane().add(btnBuscarproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 80, 30));
+        btnBuscarproducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
+        btnBuscarproducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBuscarproductoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBuscarproductoMouseExited(evt);
+            }
+        });
+        getContentPane().add(btnBuscarproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 50, 30));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel5.setText("Stock : ");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, 60, 30));
-        getContentPane().add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 220, 70, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 240, 60, 30));
+        getContentPane().add(txtStock, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 240, 60, 30));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel6.setText("Cantidad: ");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 219, 70, 30));
-        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 220, 70, 30));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 70, 30));
+        getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 60, 30));
 
+        btnAgragar.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        btnAgragar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/anadir.png"))); // NOI18N
         btnAgragar.setText("Agregar");
-        getContentPane().add(btnAgragar, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 220, 90, 30));
+        btnAgragar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnAgragarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnAgragarMouseExited(evt);
+            }
+        });
+        getContentPane().add(btnAgragar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 180, -1, 30));
 
-        btnEliminar.setText("Eliminar");
-        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 220, 90, 30));
+        btnEliminar.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminar.png"))); // NOI18N
+        btnEliminar.setText("Borrar");
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseExited(evt);
+            }
+        });
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 260, 80, 30));
 
         tblVentatotal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,45 +186,75 @@ public class VentaForm extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblVentatotal);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 910, 150));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 690, 150));
 
-        btnNuevo.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnNuevo.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nueva-pagina.png"))); // NOI18N
         btnNuevo.setText("NUEVO");
-        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, -1, -1));
+        btnNuevo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnNuevoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnNuevoMouseExited(evt);
+            }
+        });
+        getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 130, 40));
 
-        btnRegistrar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnRegistrar.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        btnRegistrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/guardar.png"))); // NOI18N
         btnRegistrar.setText("REGISTRAR");
-        getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 510, -1, -1));
+        btnRegistrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRegistrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRegistrarMouseExited(evt);
+            }
+        });
+        getContentPane().add(btnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 480, 130, 40));
 
-        btnSalir.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        btnSalir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cerrar-sesion-chico.png"))); // NOI18N
         btnSalir.setText("SALIR");
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnSalirMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnSalirMouseExited(evt);
+            }
+        });
         btnSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalirActionPerformed(evt);
             }
         });
-        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 510, 100, -1));
+        getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, 130, 40));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel7.setText("SUB. TOTAL:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 480, -1, -1));
-        getContentPane().add(txtSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 470, 110, 30));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 480, -1, -1));
+        getContentPane().add(txtSubtotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 470, 110, 30));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel8.setText("IGV:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 520, -1, -1));
-        getContentPane().add(txtIgv, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 510, 110, 30));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 520, -1, -1));
+        getContentPane().add(txtIgv, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 510, 110, 30));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel9.setText("TOTAL: ");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 560, -1, -1));
-        getContentPane().add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 550, 110, 30));
-        getContentPane().add(txtSerie, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 20, 180, 30));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 560, -1, -1));
+        getContentPane().add(txtTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 550, 110, 30));
+        getContentPane().add(txtSerie, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 60, 80, 30));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel10.setText("REGISTRO DE VENTA");
-        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
-        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 970, 620));
+        jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 10, -1, -1));
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo bl.jpg"))); // NOI18N
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(-270, -10, 1000, 630));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -165,6 +262,74 @@ public class VentaForm extends javax.swing.JFrame {
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void btnBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseEntered
+        btnBuscar.setBackground(new Color(249, 162, 28 ));
+    }//GEN-LAST:event_btnBuscarMouseEntered
+
+    private void btnBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseExited
+        btnBuscar.setBackground(new Color(255,255,255 ));
+    }//GEN-LAST:event_btnBuscarMouseExited
+
+    private void btnBuscarproductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarproductoMouseExited
+        btnBuscarproducto.setBackground(new Color(255,255,255 ));
+    }//GEN-LAST:event_btnBuscarproductoMouseExited
+
+    private void btnBuscarproductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarproductoMouseEntered
+        btnBuscarproducto.setBackground(new Color(249, 162, 28 ));
+    }//GEN-LAST:event_btnBuscarproductoMouseEntered
+
+    private void btnNuevoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoMouseEntered
+        btnNuevo.setBackground(new Color(249, 162, 28 ));
+    }//GEN-LAST:event_btnNuevoMouseEntered
+
+    private void btnNuevoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoMouseExited
+        btnNuevo.setBackground(new Color(255,255,255 ));
+    }//GEN-LAST:event_btnNuevoMouseExited
+
+    private void btnRegistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseEntered
+        btnRegistrar.setBackground(new Color(249, 162, 28 ));
+    }//GEN-LAST:event_btnRegistrarMouseEntered
+
+    private void btnRegistrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseExited
+        btnRegistrar.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_btnRegistrarMouseExited
+
+    private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
+        btnSalir.setBackground(new Color(242, 90, 99));
+    }//GEN-LAST:event_btnSalirMouseEntered
+
+    private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
+        btnSalir.setBackground(new Color(255,255,255 ));
+    }//GEN-LAST:event_btnSalirMouseExited
+
+    private void btnAgragarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgragarMouseEntered
+       btnAgragar.setBackground(new Color(201, 253, 126));
+    }//GEN-LAST:event_btnAgragarMouseEntered
+
+    private void btnAgragarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgragarMouseExited
+        btnAgragar.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_btnAgragarMouseExited
+
+    private void btnEditarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseEntered
+        btnEditar.setBackground(new Color(255, 239, 78));
+    }//GEN-LAST:event_btnEditarMouseEntered
+
+    private void btnEditarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseExited
+        btnEditar.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_btnEditarMouseExited
+
+    private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
+        btnEliminar.setBackground(new Color(245, 139, 124));
+    }//GEN-LAST:event_btnEliminarMouseEntered
+
+    private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
+        btnEliminar.setBackground(new Color(255,255,255));
+    }//GEN-LAST:event_btnEliminarMouseExited
 
     /**
      * @param args the command line arguments
@@ -208,6 +373,7 @@ public class VentaForm extends javax.swing.JFrame {
     private javax.swing.JButton btnAgragar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnBuscarproducto;
+    private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnRegistrar;
@@ -216,6 +382,7 @@ public class VentaForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -225,6 +392,7 @@ public class VentaForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblVentatotal;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCliente;

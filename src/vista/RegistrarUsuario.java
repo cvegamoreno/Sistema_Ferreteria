@@ -20,10 +20,11 @@ public class RegistrarUsuario extends javax.swing.JFrame {
      */
     public RegistrarUsuario() {
         initComponents();
+        setLocationRelativeTo(null);
         verUsuario();
         limpiar();
         habilitarBotones(false, false, true, false);
-        setLocationRelativeTo(null);
+        
     }
     
     void limpiar(){
@@ -69,7 +70,9 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setAlwaysOnTop(true);
         setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
@@ -163,7 +166,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         tblUsuario.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(tblUsuario);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, 400, 310));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 400, 310));
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, 190));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -173,7 +176,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 330, 50));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo bl.jpg"))); // NOI18N
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 550));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 550));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

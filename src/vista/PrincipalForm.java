@@ -7,6 +7,7 @@ package vista;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.plaf.basic.BasicLookAndFeel;
@@ -23,7 +24,11 @@ public class PrincipalForm extends javax.swing.JFrame {
      */
     public PrincipalForm() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/logoP.png")).getImage());
+        this.setSize(1920,1080);
         setLocationRelativeTo(null);
+        
+        
     }
 
     /**
@@ -36,8 +41,9 @@ public class PrincipalForm extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
-        jTextField2 = new javax.swing.JTextField();
         btnSalir = new javax.swing.JButton();
+        btnMinimizar = new javax.swing.JButton();
+        jTextField2 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
@@ -50,26 +56,12 @@ public class PrincipalForm extends javax.swing.JFrame {
         opRegistrocli = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField2.setBackground(new java.awt.Color(236, 236, 236));
-        jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(0, 153, 153));
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("BIENVENIDO");
-        jTextField2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-        desktopPane.add(jTextField2);
-        jTextField2.setBounds(0, 0, 820, 80);
-
-        btnSalir.setBackground(new java.awt.Color(0, 102, 153));
-        btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnSalir.setForeground(new java.awt.Color(255, 255, 255));
-        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cerrar-sesion.png"))); // NOI18N
-        btnSalir.setText("SALIR");
+        btnSalir.setBackground(new java.awt.Color(255, 204, 204));
+        btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnSalir.setText("X");
         btnSalir.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -85,11 +77,46 @@ public class PrincipalForm extends javax.swing.JFrame {
             }
         });
         desktopPane.add(btnSalir);
-        btnSalir.setBounds(680, 410, 120, 50);
+        btnSalir.setBounds(1830, 70, 70, 50);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/FONDITO.jpg"))); // NOI18N
+        btnMinimizar.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        btnMinimizar.setText("-");
+        btnMinimizar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnMinimizar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMinimizarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMinimizarMouseExited(evt);
+            }
+        });
+        btnMinimizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizarActionPerformed(evt);
+            }
+        });
+        desktopPane.add(btnMinimizar);
+        btnMinimizar.setBounds(1760, 70, 70, 50);
+
+        jTextField2.setBackground(new java.awt.Color(236, 236, 236));
+        jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(255, 153, 51));
+        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField2.setText("BIENVENIDO");
+        jTextField2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        desktopPane.add(jTextField2);
+        jTextField2.setBounds(0, 50, 1920, 80);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Fondo Big.jpg"))); // NOI18N
         desktopPane.add(jLabel2);
-        jLabel2.setBounds(0, 0, 820, 470);
+        jLabel2.setBounds(0, 0, 2300, 1170);
+
+        getContentPane().add(desktopPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2300, 1170));
 
         menuBar.setBorder(null);
 
@@ -97,7 +124,9 @@ public class PrincipalForm extends javax.swing.JFrame {
         fileMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/usuaprincipal.png"))); // NOI18N
         fileMenu.setMnemonic('f');
         fileMenu.setText("Registro");
+        fileMenu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        opCargarUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         opCargarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flecha-correcta.png"))); // NOI18N
         opCargarUsuario.setMnemonic('o');
         opCargarUsuario.setText("Registo Usuario");
@@ -114,12 +143,14 @@ public class PrincipalForm extends javax.swing.JFrame {
         editMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carro.png"))); // NOI18N
         editMenu.setMnemonic('e');
         editMenu.setText("Venta");
+        editMenu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         editMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editMenuActionPerformed(evt);
             }
         });
 
+        opCargarVenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         opCargarVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flecha-correcta.png"))); // NOI18N
         opCargarVenta.setMnemonic('t');
         opCargarVenta.setText("Realizar Venta");
@@ -136,7 +167,9 @@ public class PrincipalForm extends javax.swing.JFrame {
         helpMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/productos.png"))); // NOI18N
         helpMenu.setMnemonic('h');
         helpMenu.setText("Productos");
+        helpMenu.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        opCargarRegistro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         opCargarRegistro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flecha-correcta.png"))); // NOI18N
         opCargarRegistro.setMnemonic('c');
         opCargarRegistro.setText("Registrar Producto");
@@ -151,7 +184,9 @@ public class PrincipalForm extends javax.swing.JFrame {
 
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cliente.png"))); // NOI18N
         jMenu1.setText("Clientes");
+        jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
+        opRegistrocli.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         opRegistrocli.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flecha-correcta.png"))); // NOI18N
         opRegistrocli.setText("Registro deClientes");
         opRegistrocli.addActionListener(new java.awt.event.ActionListener() {
@@ -164,19 +199,6 @@ public class PrincipalForm extends javax.swing.JFrame {
         menuBar.add(jMenu1);
 
         setJMenuBar(menuBar);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 814, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 468, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -203,7 +225,7 @@ public class PrincipalForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
-        btnSalir.setBackground(new Color(0,102,153) );
+        btnSalir.setBackground(new Color(255,204,204) );
     }//GEN-LAST:event_btnSalirMouseExited
 
     private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
@@ -218,6 +240,18 @@ public class PrincipalForm extends javax.swing.JFrame {
         ClientesForm clientesForm = new ClientesForm();
         clientesForm.setVisible(true);
     }//GEN-LAST:event_opRegistrocliActionPerformed
+
+    private void btnMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizarActionPerformed
+        this.setExtendedState(PrincipalForm.ICONIFIED); 
+    }//GEN-LAST:event_btnMinimizarActionPerformed
+
+    private void btnMinimizarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizarMouseEntered
+        btnMinimizar.setBackground(new Color(255, 247, 83) );
+    }//GEN-LAST:event_btnMinimizarMouseEntered
+
+    private void btnMinimizarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMinimizarMouseExited
+        btnMinimizar.setBackground(new Color(255,255,255) );
+    }//GEN-LAST:event_btnMinimizarMouseExited
 
     /**
      * @param args the command line arguments
@@ -258,6 +292,7 @@ public class PrincipalForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMinimizar;
     private javax.swing.JButton btnSalir;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu editMenu;

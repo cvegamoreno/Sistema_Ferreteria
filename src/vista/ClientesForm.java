@@ -20,6 +20,7 @@ public class ClientesForm extends javax.swing.JFrame {
      */
     public ClientesForm() {
         initComponents();
+        setLocationRelativeTo(null);
         verCliente();
         verTipoCliente();
         habilitarBotones(false,true, false, false, false, false, false, false, false, false);
@@ -96,6 +97,8 @@ public class ClientesForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
