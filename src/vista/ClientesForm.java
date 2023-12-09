@@ -343,7 +343,24 @@ public class ClientesForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
-
+        int idCliente, codTipoCliente;
+        String nombreCliente, dniruc, direccion, telefono, tipoCliente;
+        idCliente = Integer.parseInt(txtId.getText());
+        nombreCliente = txtNombre2.getText();
+        direccion = txtDireccion.getText();
+        telefono = txtTelefono.getText();
+        dniruc = txtNumeroCliente.getText();
+        tipoCliente = (String)CboTipoCliente.getSelectedItem();
+        DTOTipoCliente objetoC = new DTOTipoCliente();
+        objetoC.setTipoCliente(tipoCliente);
+        DAOTipoCliente objetoD = new DAOTipoCliente();
+        codTipoCliente = objetoD.recuperarCodigo(objetoC);
+        DTOCliente objeto = new DTOCliente(idCliente, nombreCliente, dniruc, direccion, telefono, codTipoCliente);
+        DAOCliente oDCli = new DAOCliente();
+        oDCli.editar(objeto);
+        verCliente();
+        limpiar();
+        habilitarBotones(false,true, false, false, false, false, false, false, false, false);
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void tblClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblClienteMouseClicked
