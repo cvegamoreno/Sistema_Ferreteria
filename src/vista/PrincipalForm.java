@@ -25,7 +25,7 @@ public class PrincipalForm extends javax.swing.JFrame {
     public PrincipalForm() {
         initComponents();
         setIconImage(new ImageIcon(getClass().getResource("/logoP.png")).getImage());
-        this.setSize(1920,1080);
+        this.setSize(1440,900);
         setLocationRelativeTo(null);
         
         
@@ -77,7 +77,7 @@ public class PrincipalForm extends javax.swing.JFrame {
             }
         });
         desktopPane.add(btnSalir);
-        btnSalir.setBounds(1830, 70, 70, 50);
+        btnSalir.setBounds(1360, 60, 70, 50);
 
         btnMinimizar.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         btnMinimizar.setText("-");
@@ -96,7 +96,7 @@ public class PrincipalForm extends javax.swing.JFrame {
             }
         });
         desktopPane.add(btnMinimizar);
-        btnMinimizar.setBounds(1760, 70, 70, 50);
+        btnMinimizar.setBounds(1290, 60, 70, 50);
 
         jTextField2.setBackground(new java.awt.Color(236, 236, 236));
         jTextField2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
@@ -110,7 +110,7 @@ public class PrincipalForm extends javax.swing.JFrame {
             }
         });
         desktopPane.add(jTextField2);
-        jTextField2.setBounds(0, 50, 1920, 80);
+        jTextField2.setBounds(0, 50, 1440, 80);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Fondo Big.jpg"))); // NOI18N
         desktopPane.add(jLabel2);
