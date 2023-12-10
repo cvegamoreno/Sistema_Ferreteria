@@ -50,6 +50,7 @@ public class PrincipalForm extends javax.swing.JFrame {
         opCargarUsuario = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         opCargarVenta = new javax.swing.JMenuItem();
+        opListadoVenta = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         opCargarRegistro = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -161,6 +162,15 @@ public class PrincipalForm extends javax.swing.JFrame {
         });
         editMenu.add(opCargarVenta);
 
+        opListadoVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flecha-correcta.png"))); // NOI18N
+        opListadoVenta.setText("Lista de Ventas");
+        opListadoVenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opListadoVentaActionPerformed(evt);
+            }
+        });
+        editMenu.add(opListadoVenta);
+
         menuBar.add(editMenu);
 
         helpMenu.setBackground(new java.awt.Color(0, 204, 255));
@@ -253,6 +263,11 @@ public class PrincipalForm extends javax.swing.JFrame {
         btnMinimizar.setBackground(new Color(255,255,255) );
     }//GEN-LAST:event_btnMinimizarMouseExited
 
+    private void opListadoVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opListadoVentaActionPerformed
+        ListaVentas listaVentas = new ListaVentas();
+        listaVentas.setVisible(true);
+    }//GEN-LAST:event_opListadoVentaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -305,6 +320,7 @@ public class PrincipalForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem opCargarRegistro;
     private javax.swing.JMenuItem opCargarUsuario;
     private javax.swing.JMenuItem opCargarVenta;
+    private javax.swing.JMenuItem opListadoVenta;
     private javax.swing.JMenuItem opRegistrocli;
     // End of variables declaration//GEN-END:variables
 
