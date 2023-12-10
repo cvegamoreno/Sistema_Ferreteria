@@ -109,26 +109,31 @@ public class FrmProducto extends javax.swing.JFrame {
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel6.setText("Precio Unitario :");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(111, 200, 150, 30));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 240, 150, 30));
 
         txtprecioprod.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        getContentPane().add(txtprecioprod, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 120, 30));
+        getContentPane().add(txtprecioprod, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 120, 30));
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel7.setText("Stock :");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 214, -1, 30));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, -1, 30));
 
         txtstock.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        getContentPane().add(txtstock, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, 80, 30));
+        getContentPane().add(txtstock, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 80, 30));
 
         txtmedidas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        getContentPane().add(txtmedidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 120, 30));
+        txtmedidas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtmedidasActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtmedidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 120, 30));
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel9.setText("Medidas :");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, -1, 30));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, -1, 30));
 
         btnAgregar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/guardar.png"))); // NOI18N
@@ -257,7 +262,7 @@ public class FrmProducto extends javax.swing.JFrame {
         getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 120, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo bl.jpg"))); // NOI18N
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -10, 900, 600));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -402,6 +407,10 @@ public class FrmProducto extends javax.swing.JFrame {
     private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
         btnSalir.setBackground(new Color(255,255,255 ));
     }//GEN-LAST:event_btnSalirMouseExited
+
+    private void txtmedidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmedidasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtmedidasActionPerformed
 
     /**
      * @param args the command line arguments

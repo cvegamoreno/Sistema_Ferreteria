@@ -152,6 +152,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 460, 110, 40));
 
         tblUsuario.setBackground(new java.awt.Color(255, 204, 102));
+        tblUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tblUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -163,7 +164,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
                 "CORREO", "CONTRASEÑA"
             }
         ));
-        tblUsuario.setSelectionBackground(new java.awt.Color(255, 255, 255));
+        tblUsuario.setSelectionBackground(new java.awt.Color(0, 204, 255));
         jScrollPane1.setViewportView(tblUsuario);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 400, 310));
