@@ -149,6 +149,7 @@ public class ClientesForm extends javax.swing.JFrame {
             }
         ));
         tblCliente.setColumnSelectionAllowed(true);
+        tblCliente.setSelectionBackground(new java.awt.Color(0, 204, 255));
         tblCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblClienteMouseClicked(evt);

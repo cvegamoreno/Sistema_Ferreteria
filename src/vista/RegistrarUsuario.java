@@ -67,6 +67,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         tblUsuario = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        btnBorrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -152,7 +153,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         getContentPane().add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 460, 110, 40));
 
         tblUsuario.setBackground(new java.awt.Color(255, 204, 102));
-        tblUsuario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tblUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         tblUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -175,6 +176,19 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         jLabel3.setText("REGISTRAR USUARIO");
         jLabel3.setBorder(new javax.swing.border.MatteBorder(null));
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 330, 50));
+
+        btnBorrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBorrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/borrar.png"))); // NOI18N
+        btnBorrar.setText("Borrar");
+        btnBorrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBorrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBorrarMouseExited(evt);
+            }
+        });
+        getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 410, 110, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo bl.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 550));
@@ -240,6 +254,14 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         btnSalir.setBackground(new Color(255,255,255 ));
     }//GEN-LAST:event_btnSalirMouseExited
 
+    private void btnBorrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseEntered
+        btnBorrar.setBackground(new Color(249, 162, 28 ));
+    }//GEN-LAST:event_btnBorrarMouseEntered
+
+    private void btnBorrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseExited
+       btnBorrar.setBackground(new Color(255,255,255  ));
+    }//GEN-LAST:event_btnBorrarMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -277,6 +299,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBorrar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JButton btnSalir;

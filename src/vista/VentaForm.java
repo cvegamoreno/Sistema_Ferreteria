@@ -173,6 +173,7 @@ public class VentaForm extends javax.swing.JFrame {
         });
         getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 260, 80, 30));
 
+        tblVentatotal.setBackground(new java.awt.Color(255, 204, 102));
         tblVentatotal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -184,6 +185,7 @@ public class VentaForm extends javax.swing.JFrame {
                 "ID", "Nombre", "Descripcion", "Cantidad", "Precio UND", "Total"
             }
         ));
+        tblVentatotal.setSelectionBackground(new java.awt.Color(0, 204, 255));
         jScrollPane1.setViewportView(tblVentatotal);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 690, 150));

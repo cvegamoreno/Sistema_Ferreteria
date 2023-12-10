@@ -50,7 +50,7 @@ public class PrincipalForm extends javax.swing.JFrame {
         opCargarUsuario = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         opCargarVenta = new javax.swing.JMenuItem();
-        opListadoVenta = new javax.swing.JMenuItem();
+        opListaVenta = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         opCargarRegistro = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -119,9 +119,11 @@ public class PrincipalForm extends javax.swing.JFrame {
 
         getContentPane().add(desktopPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 2300, 1170));
 
+        menuBar.setBackground(new java.awt.Color(255, 204, 102));
         menuBar.setBorder(null);
 
-        fileMenu.setBackground(new java.awt.Color(0, 204, 255));
+        fileMenu.setBackground(new java.awt.Color(255, 204, 102));
+        fileMenu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         fileMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/usuaprincipal.png"))); // NOI18N
         fileMenu.setMnemonic('f');
         fileMenu.setText("Registro");
@@ -131,6 +133,14 @@ public class PrincipalForm extends javax.swing.JFrame {
         opCargarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flecha-correcta.png"))); // NOI18N
         opCargarUsuario.setMnemonic('o');
         opCargarUsuario.setText("Registo Usuario");
+        opCargarUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                opCargarUsuarioMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                opCargarUsuarioMouseExited(evt);
+            }
+        });
         opCargarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opCargarUsuarioActionPerformed(evt);
@@ -140,7 +150,8 @@ public class PrincipalForm extends javax.swing.JFrame {
 
         menuBar.add(fileMenu);
 
-        editMenu.setBackground(new java.awt.Color(0, 204, 255));
+        editMenu.setBackground(new java.awt.Color(255, 204, 102));
+        editMenu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         editMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carro.png"))); // NOI18N
         editMenu.setMnemonic('e');
         editMenu.setText("Venta");
@@ -162,18 +173,20 @@ public class PrincipalForm extends javax.swing.JFrame {
         });
         editMenu.add(opCargarVenta);
 
-        opListadoVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flecha-correcta.png"))); // NOI18N
-        opListadoVenta.setText("Lista de Ventas");
-        opListadoVenta.addActionListener(new java.awt.event.ActionListener() {
+        opListaVenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        opListaVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flecha-correcta.png"))); // NOI18N
+        opListaVenta.setText("Lista de Ventas");
+        opListaVenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opListadoVentaActionPerformed(evt);
+                opListaVentaActionPerformed(evt);
             }
         });
-        editMenu.add(opListadoVenta);
+        editMenu.add(opListaVenta);
 
         menuBar.add(editMenu);
 
-        helpMenu.setBackground(new java.awt.Color(0, 204, 255));
+        helpMenu.setBackground(new java.awt.Color(255, 204, 102));
+        helpMenu.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         helpMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/productos.png"))); // NOI18N
         helpMenu.setMnemonic('h');
         helpMenu.setText("Productos");
@@ -192,6 +205,8 @@ public class PrincipalForm extends javax.swing.JFrame {
 
         menuBar.add(helpMenu);
 
+        jMenu1.setBackground(new java.awt.Color(255, 204, 102));
+        jMenu1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jMenu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cliente.png"))); // NOI18N
         jMenu1.setText("Clientes");
         jMenu1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -263,10 +278,18 @@ public class PrincipalForm extends javax.swing.JFrame {
         btnMinimizar.setBackground(new Color(255,255,255) );
     }//GEN-LAST:event_btnMinimizarMouseExited
 
-    private void opListadoVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opListadoVentaActionPerformed
-        ListaVentas listaVentas = new ListaVentas();
-        listaVentas.setVisible(true);
-    }//GEN-LAST:event_opListadoVentaActionPerformed
+    private void opListaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opListaVentaActionPerformed
+        BusquedaVentas frmVentas = new BusquedaVentas();
+        frmVentas.setVisible(true);
+    }//GEN-LAST:event_opListaVentaActionPerformed
+
+    private void opCargarUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opCargarUsuarioMouseEntered
+        
+    }//GEN-LAST:event_opCargarUsuarioMouseEntered
+
+    private void opCargarUsuarioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opCargarUsuarioMouseExited
+        
+    }//GEN-LAST:event_opCargarUsuarioMouseExited
 
     /**
      * @param args the command line arguments
@@ -320,7 +343,7 @@ public class PrincipalForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem opCargarRegistro;
     private javax.swing.JMenuItem opCargarUsuario;
     private javax.swing.JMenuItem opCargarVenta;
-    private javax.swing.JMenuItem opListadoVenta;
+    private javax.swing.JMenuItem opListaVenta;
     private javax.swing.JMenuItem opRegistrocli;
     // End of variables declaration//GEN-END:variables
 

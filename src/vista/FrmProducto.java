@@ -171,6 +171,7 @@ public class FrmProducto extends javax.swing.JFrame {
                 "ID", "Nombre Producto", "Descripcion", "Precio Unitario", "Stock", "Medidas"
             }
         ));
+        tblproducto.setSelectionBackground(new java.awt.Color(0, 204, 255));
         tblproducto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblproductoMouseClicked(evt);
