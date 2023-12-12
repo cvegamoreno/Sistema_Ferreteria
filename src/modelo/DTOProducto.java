@@ -15,6 +15,7 @@ public class DTOProducto {
     private double precioprod;
     private int stock;
     private double medidas;
+    private boolean resultadoEncontrado;
 
     public DTOProducto() {
     }
@@ -30,6 +31,10 @@ public class DTOProducto {
         this.precioprod = precioprod;
         this.stock = stock;
         this.medidas = medidas;
+    }
+    
+    public DTOProducto(String nombreProd) {
+        this.nombreProd = nombreProd;
     }
 
     public int getIdProducto() {
@@ -80,4 +85,11 @@ public class DTOProducto {
         this.medidas = medidas;
     }
     
+    public boolean isResultadoEncontrado() {
+        return resultadoEncontrado;
+    }
+
+    public void setResultadoEncontrado(boolean resultadoEncontrado) {
+        this.resultadoEncontrado = resultadoEncontrado;
+    }
 }

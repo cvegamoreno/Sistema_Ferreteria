@@ -23,6 +23,7 @@ public class DAOProducto {
     private final String SQLEDITAR = "update productos SET producto_id= ?, nombre =?, descripcion=?, precio_unitario =?, stock =?, medidas =? WHERE producto_id =?";
     private final String SQLELIMINAR = "DELETE FROM productos WHERE producto_id=?";
     private final String SQLVER = "select * from productos";
+    private final String SQLBUSCAR = "SELECT nombre, stock FROM productos where nombre = ?";
 
     public DAOProducto() {
         oCon = new Conexion();
@@ -93,6 +94,27 @@ public class DAOProducto {
             Logger.getLogger(DAOProducto.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             oCon.cerrarConexion();
+        }
+    }
+    
+    public void buscar(DTOProducto objeto) {
+        try {
+            pst = con.prepareStatement(SQLBUSCAR);
+            pst.setString(1, objeto.getNombreProd());
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                objeto.setNombreProd(rs.getString("nombre"));
+                objeto.setStock(rs.getInt("stock"));
+                objeto.setResultadoEncontrado(true);
+            } else {
+                objeto.setResultadoEncontrado(false);
+            }
+        } catch (SQLException e) {
+            System.out.println("¡Error al buscar producto!, " + e);
+        } finally {
+            
         }
     }
 

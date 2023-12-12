@@ -5,6 +5,14 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
+import modelo.DAOCliente;
+import modelo.DAOProducto;
+import modelo.DAOTipoComprobante;
+import modelo.DTOCliente;
+import modelo.DTOProducto;
 
 /**
  *
@@ -18,8 +26,57 @@ public class VentaForm extends javax.swing.JFrame {
     public VentaForm() {
         initComponents();
         setLocationRelativeTo(null);
+        verTipoComprobante();
+        habilitarBotones(false, false, false, false, false, true, false);
+        habilitarTxt(false, false, false, false, false, false, false, false, false, false, false, false);
     }
-
+    
+    void verTipoComprobante(){
+        DefaultComboBoxModel modelocomprobante;
+        DAOTipoComprobante objeto = new DAOTipoComprobante();
+        modelocomprobante = objeto.verTipoCom();
+        cbxTipo.setModel(modelocomprobante);
+        
+    }
+    
+    void habilitarBotones(boolean b, boolean bp, boolean ag, boolean ed, boolean el, boolean nw, boolean reg) {
+        btnBuscar.setEnabled(b);
+        btnBuscarproducto.setEnabled(bp);
+        btnAgregar.setEnabled(ag);
+        btnEditar.setEnabled(ed);
+        btnEliminar.setEnabled(el);
+        btnNuevo.setEnabled(nw);
+        btnRegistrar.setEnabled(reg);
+    }
+    
+    void habilitarTxt(boolean doc, boolean tipo, boolean ser, boolean cl, boolean fe, boolean dir, boolean pro, boolean can, boolean stk, boolean sbt, boolean igv, boolean tot) {
+        txtDocumento.setEnabled(doc);
+        cbxTipo.setEnabled(tipo);
+        txtSerie.setEnabled(ser);
+        txtCliente.setEnabled(cl);
+        txtFecha.setEnabled(fe);
+        txtDireccion.setEnabled(dir);
+        txtProducto.setEnabled(pro);
+        txtCantidad.setEnabled(can);
+        txtStock.setEnabled(stk);
+        txtSubtotal.setEnabled(sbt);
+        txtIgv.setEnabled(igv);
+        txtTotal.setEnabled(tot);
+    }
+    
+    void limpiar (){
+        txtDocumento.setText("");
+        txtSerie.setText("");
+        txtCliente.setText("");
+        txtFecha.setText("");
+        txtDireccion.setText("");
+        txtProducto.setText("");
+        txtCantidad.setText("");
+        txtStock.setText("");
+        txtSubtotal.setText("");
+        txtIgv.setText("");
+        txtTotal.setText("");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,7 +87,7 @@ public class VentaForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel12 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtDocumento = new javax.swing.JTextField();
         btnEditar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         txtCliente = new javax.swing.JTextField();
@@ -41,13 +98,13 @@ public class VentaForm extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtFecha = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        txtIdproducto = new javax.swing.JTextField();
+        txtProducto = new javax.swing.JTextField();
         btnBuscarproducto = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         txtStock = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         txtCantidad = new javax.swing.JTextField();
-        btnAgragar = new javax.swing.JButton();
+        btnAgregar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblVentatotal = new javax.swing.JTable();
@@ -71,7 +128,13 @@ public class VentaForm extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel12.setText("N° Documento:");
         getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 110, 30));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 240, 30));
+
+        txtDocumento.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDocumentoKeyPressed(evt);
+            }
+        });
+        getContentPane().add(txtDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 60, 240, 30));
 
         btnEditar.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         btnEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/editar2.png"))); // NOI18N
@@ -106,9 +169,14 @@ public class VentaForm extends javax.swing.JFrame {
                 btnBuscarMouseExited(evt);
             }
         });
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 50, 30));
 
-        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boleta", "Factura" }));
+        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boleta", "Fact" }));
         getContentPane().add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 80, 30));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -119,10 +187,13 @@ public class VentaForm extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Producto: ");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 80, 30));
-        getContentPane().add(txtIdproducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 240, 30));
+        getContentPane().add(txtProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 240, 30));
 
         btnBuscarproducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
         btnBuscarproducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarproductoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 btnBuscarproductoMouseEntered(evt);
             }
@@ -142,18 +213,18 @@ public class VentaForm extends javax.swing.JFrame {
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 70, 30));
         getContentPane().add(txtCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, 60, 30));
 
-        btnAgragar.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        btnAgragar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/anadir.png"))); // NOI18N
-        btnAgragar.setText("Agregar");
-        btnAgragar.addMouseListener(new java.awt.event.MouseAdapter() {
+        btnAgregar.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
+        btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/anadir.png"))); // NOI18N
+        btnAgregar.setText("Agregar");
+        btnAgregar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnAgragarMouseEntered(evt);
+                btnAgregarMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnAgragarMouseExited(evt);
+                btnAgregarMouseExited(evt);
             }
         });
-        getContentPane().add(btnAgragar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 180, -1, 30));
+        getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 180, -1, 30));
 
         btnEliminar.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/eliminar.png"))); // NOI18N
@@ -186,6 +257,11 @@ public class VentaForm extends javax.swing.JFrame {
             }
         ));
         tblVentatotal.setSelectionBackground(new java.awt.Color(0, 204, 255));
+        tblVentatotal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblVentatotalMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblVentatotal);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 690, 150));
@@ -199,6 +275,11 @@ public class VentaForm extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnNuevoMouseExited(evt);
+            }
+        });
+        btnNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNuevoActionPerformed(evt);
             }
         });
         getContentPane().add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, 130, 40));
@@ -270,35 +351,35 @@ public class VentaForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseEntered
-        btnBuscar.setBackground(new Color(249, 162, 28 ));
+        btnBuscar.setBackground(new Color(249, 162, 28));
     }//GEN-LAST:event_btnBuscarMouseEntered
 
     private void btnBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseExited
-        btnBuscar.setBackground(new Color(255,255,255 ));
+        btnBuscar.setBackground(new Color(255, 255, 255));
     }//GEN-LAST:event_btnBuscarMouseExited
 
     private void btnBuscarproductoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarproductoMouseExited
-        btnBuscarproducto.setBackground(new Color(255,255,255 ));
+        btnBuscarproducto.setBackground(new Color(255, 255, 255));
     }//GEN-LAST:event_btnBuscarproductoMouseExited
 
     private void btnBuscarproductoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarproductoMouseEntered
-        btnBuscarproducto.setBackground(new Color(249, 162, 28 ));
+        btnBuscarproducto.setBackground(new Color(249, 162, 28));
     }//GEN-LAST:event_btnBuscarproductoMouseEntered
 
     private void btnNuevoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoMouseEntered
-        btnNuevo.setBackground(new Color(249, 162, 28 ));
+        btnNuevo.setBackground(new Color(249, 162, 28));
     }//GEN-LAST:event_btnNuevoMouseEntered
 
     private void btnNuevoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoMouseExited
-        btnNuevo.setBackground(new Color(255,255,255 ));
+        btnNuevo.setBackground(new Color(255, 255, 255));
     }//GEN-LAST:event_btnNuevoMouseExited
 
     private void btnRegistrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseEntered
-        btnRegistrar.setBackground(new Color(249, 162, 28 ));
+        btnRegistrar.setBackground(new Color(249, 162, 28));
     }//GEN-LAST:event_btnRegistrarMouseEntered
 
     private void btnRegistrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRegistrarMouseExited
-        btnRegistrar.setBackground(new Color(255,255,255));
+        btnRegistrar.setBackground(new Color(255, 255, 255));
     }//GEN-LAST:event_btnRegistrarMouseExited
 
     private void btnSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseEntered
@@ -306,23 +387,23 @@ public class VentaForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirMouseEntered
 
     private void btnSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMouseExited
-        btnSalir.setBackground(new Color(255,255,255 ));
+        btnSalir.setBackground(new Color(255, 255, 255));
     }//GEN-LAST:event_btnSalirMouseExited
 
-    private void btnAgragarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgragarMouseEntered
-       btnAgragar.setBackground(new Color(201, 253, 126));
-    }//GEN-LAST:event_btnAgragarMouseEntered
+    private void btnAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseEntered
+        btnAgregar.setBackground(new Color(201, 253, 126));
+    }//GEN-LAST:event_btnAgregarMouseEntered
 
-    private void btnAgragarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgragarMouseExited
-        btnAgragar.setBackground(new Color(255,255,255));
-    }//GEN-LAST:event_btnAgragarMouseExited
+    private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
+        btnAgregar.setBackground(new Color(255, 255, 255));
+    }//GEN-LAST:event_btnAgregarMouseExited
 
     private void btnEditarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseEntered
         btnEditar.setBackground(new Color(255, 239, 78));
     }//GEN-LAST:event_btnEditarMouseEntered
 
     private void btnEditarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEditarMouseExited
-        btnEditar.setBackground(new Color(255,255,255));
+        btnEditar.setBackground(new Color(255, 255, 255));
     }//GEN-LAST:event_btnEditarMouseExited
 
     private void btnEliminarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseEntered
@@ -330,8 +411,81 @@ public class VentaForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarMouseEntered
 
     private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
-        btnEliminar.setBackground(new Color(255,255,255));
+        btnEliminar.setBackground(new Color(255, 255, 255));
     }//GEN-LAST:event_btnEliminarMouseExited
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String clienteBuscar = txtDocumento.getText().trim();
+
+        DTOCliente objeto = new DTOCliente(clienteBuscar);
+
+        DAOCliente objetoD = new DAOCliente();
+        objetoD.buscar(objeto);
+
+        // Verificar si se encontraron resultados
+        if (objeto.isResultadoEncontrado()) {
+            
+            String nombreCliente = objeto.getNombreCliente();
+            String direccion = objeto.getDireccion();
+
+            txtCliente.setText(nombreCliente);
+            txtDireccion.setText(direccion);
+        } else {
+            JOptionPane.showMessageDialog(this, "¡Documento no encontrado en la base de datos!", "Error", JOptionPane.ERROR_MESSAGE);
+
+            txtCliente.setText("");
+            txtDireccion.setText("");
+        }
+        habilitarBotones(false, true, false, false, false, true, false);
+        habilitarTxt(false, true, true, false, true, false, true, false, false, false, false, false);
+        txtSerie.requestFocus();
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void txtDocumentoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDocumentoKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnBuscarActionPerformed(null);
+        }
+    }//GEN-LAST:event_txtDocumentoKeyPressed
+
+    private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        habilitarBotones(true, false, false, false, false, false, false);
+        habilitarTxt(true, false, false, false, false, false, false, false, false, false, false, false);
+        txtDocumento.requestFocus();
+        limpiar();
+    }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void btnBuscarproductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarproductoMouseClicked
+        String buscarProducto = txtProducto.getText().trim();
+
+        DTOProducto objeto = new DTOProducto(buscarProducto);
+
+        DAOProducto objetoD = new DAOProducto();
+        objetoD.buscar(objeto);
+
+        // Verificar si se encontraron resultados
+        if (objeto.isResultadoEncontrado()) {
+            
+            String nombreProducto = objeto.getNombreProd();
+            int stock = objeto.getStock();
+
+            txtProducto.setText(nombreProducto);
+            txtStock.setText(String.valueOf(stock));
+        } else {
+            JOptionPane.showMessageDialog(this, "¡Producto no encontrado en la base de datos!", "Error", JOptionPane.ERROR_MESSAGE);
+
+            txtProducto.setText("");
+            txtCantidad.setText("");
+            txtStock.setText("");
+        }
+        habilitarBotones(false, true, false, false, false, true, false);
+        habilitarTxt(false, true, true, false, true, false, true, true, false, false, false, false);
+        txtCantidad.requestFocus();
+    }//GEN-LAST:event_btnBuscarproductoMouseClicked
+
+    private void tblVentatotalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVentatotalMouseClicked
+        habilitarBotones(false, true, false, true, true, true, false);
+        habilitarTxt(false, true, true, false, true, false, true, true, false, false, false, false);
+    }//GEN-LAST:event_tblVentatotalMouseClicked
 
     /**
      * @param args the command line arguments
@@ -372,7 +526,7 @@ public class VentaForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgragar;
+    private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnBuscarproducto;
     private javax.swing.JButton btnEditar;
@@ -394,14 +548,14 @@ public class VentaForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblVentatotal;
     private javax.swing.JTextField txtCantidad;
     private javax.swing.JTextField txtCliente;
     private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtDocumento;
     private javax.swing.JTextField txtFecha;
-    private javax.swing.JTextField txtIdproducto;
     private javax.swing.JTextField txtIgv;
+    private javax.swing.JTextField txtProducto;
     private javax.swing.JTextField txtSerie;
     private javax.swing.JTextField txtStock;
     private javax.swing.JTextField txtSubtotal;

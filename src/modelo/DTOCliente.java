@@ -12,6 +12,7 @@ public class DTOCliente {
     private String telefono;
     private int idTipoCliente;
     private String numeroCliente;
+    private boolean resultadoEncontrado;
 
     public DTOCliente() {
     }
@@ -27,6 +28,10 @@ public class DTOCliente {
         this.telefono = telefono;
         this.idTipoCliente = idTipoCliente;
         this.numeroCliente = numeroCliente;        
+    }
+
+    public DTOCliente(String numeroCliente) {
+        this.numeroCliente = numeroCliente;
     }
 
     public int getIdCliente() {
@@ -75,5 +80,13 @@ public class DTOCliente {
 
     public void setNumeroCliente(String numeroCliente) {
         this.numeroCliente = numeroCliente;
+    }
+    
+    public boolean isResultadoEncontrado() {
+        return resultadoEncontrado;
+    }
+
+    public void setResultadoEncontrado(boolean resultadoEncontrado) {
+        this.resultadoEncontrado = resultadoEncontrado;
     }
 }

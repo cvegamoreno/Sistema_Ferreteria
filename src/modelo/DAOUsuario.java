@@ -77,7 +77,7 @@ public class DAOUsuario {
         try {
 
             pst = con.prepareStatement(SQLELIMINAR);
-            pst.setString(1, objeto.getNombreUsu());
+            pst.setInt(1, objeto.getIdUsuario());
             pst.executeUpdate();
 
         } catch (SQLException ex) {

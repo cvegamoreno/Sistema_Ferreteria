@@ -23,7 +23,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         verUsuario();
         limpiar();
-        habilitarBotones(false, false, true, false);
+        habilitarBotones(false, false, true, false, false);
         
     }
     
@@ -40,11 +40,12 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         tblUsuario.setModel(modelo);  
     }
     
-    void habilitarBotones(boolean correo, boolean pass, boolean n,boolean g){
+    void habilitarBotones(boolean correo, boolean pass, boolean n,boolean g, boolean bo){
         txtCoreo.setEnabled(correo);
         txtContra.setEnabled(pass);
         btnNuevo.setEnabled(n);
         btnGuardar.setEnabled(g);
+        btnBorrar.setEnabled(bo);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -69,6 +70,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnBorrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        txtIdUsuario = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -166,6 +168,11 @@ public class RegistrarUsuario extends javax.swing.JFrame {
             }
         ));
         tblUsuario.setSelectionBackground(new java.awt.Color(0, 204, 255));
+        tblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblUsuarioMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblUsuario);
 
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 90, 400, 310));
@@ -188,10 +195,23 @@ public class RegistrarUsuario extends javax.swing.JFrame {
                 btnBorrarMouseExited(evt);
             }
         });
+        btnBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBorrarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 410, 110, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo bl.jpg"))); // NOI18N
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 760, 550));
+
+        txtIdUsuario.setEnabled(false);
+        txtIdUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIdUsuarioActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtIdUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 240, 40));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -207,7 +227,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
         verUsuario();
         limpiar();
-        habilitarBotones(true, true, false, true);
+        habilitarBotones(true, true, false, true, false);
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
@@ -227,7 +247,7 @@ public class RegistrarUsuario extends javax.swing.JFrame {
         
         verUsuario();
         limpiar();
-        habilitarBotones(false, false, true, false);
+        habilitarBotones(false, false, true, false, false);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnNuevoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoMouseEntered
@@ -261,6 +281,37 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     private void btnBorrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseExited
        btnBorrar.setBackground(new Color(255,255,255  ));
     }//GEN-LAST:event_btnBorrarMouseExited
+
+    private void btnBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarActionPerformed
+        int IdUsuario;
+        IdUsuario = Integer.parseInt(txtIdUsuario.getText());
+        
+        DTOUsuario objeto =new DTOUsuario(IdUsuario);
+        
+        DAOUsuario objetoD=new DAOUsuario();
+        objetoD.eliminar(objeto);
+        
+        verUsuario();
+        limpiar();
+    }//GEN-LAST:event_btnBorrarActionPerformed
+
+    private void tblUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblUsuarioMouseClicked
+        int fila;
+        fila = tblUsuario.getSelectedRow();
+        String id,nombre,contra;
+        id = (String) tblUsuario.getValueAt(fila,0);
+        nombre = (String) tblUsuario.getValueAt(fila,1);
+        contra = (String) tblUsuario.getValueAt(fila,2);
+        
+        txtIdUsuario.setText(id);
+        txtCoreo.setText(nombre);
+        txtContra.setText(contra);
+        habilitarBotones(false, false, true, false, true);
+    }//GEN-LAST:event_tblUsuarioMouseClicked
+
+    private void txtIdUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtIdUsuarioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdUsuarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -313,5 +364,6 @@ public class RegistrarUsuario extends javax.swing.JFrame {
     private javax.swing.JTable tblUsuario;
     private javax.swing.JTextField txtContra;
     private javax.swing.JTextField txtCoreo;
+    private javax.swing.JTextField txtIdUsuario;
     // End of variables declaration//GEN-END:variables
 }

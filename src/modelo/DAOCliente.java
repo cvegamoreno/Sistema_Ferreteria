@@ -23,6 +23,7 @@ public class DAOCliente {
     private final String SQLEDITAR = "UPDATE clientes SET cliente_id= ?, nombre =?, direccion=?, telefono =?, tipo_cliente_id =?, numerocli =? WHERE cliente_id =?";
     private final String SQLELIMINAR = "DELETE FROM clientes WHERE cliente_id=?";
     private final String SQLVER = "SELECT cliente_id, nombre, direccion, telefono, tipocli, numerocli FROM clientes, tipocliente WHERE tipocliente.tipo_cliente_id = clientes.tipo_cliente_id";
+    private final String SQLBUSCAR = "SELECT nombre, direccion FROM clientes where numerocli = ?";
 
     public DAOCliente() {
         oCon = new Conexion();
@@ -69,7 +70,7 @@ public class DAOCliente {
             oCon.cerrarConexion();
         }
     }
-    
+
     public void eliminar(DTOCliente objeto) {
 
         try {
@@ -84,7 +85,28 @@ public class DAOCliente {
             oCon.cerrarConexion();
         }
     }
-    
+
+    public void buscar(DTOCliente objeto) {
+        try {
+            pst = con.prepareStatement(SQLBUSCAR);
+            pst.setString(1, objeto.getNumeroCliente());
+
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                objeto.setNombreCliente(rs.getString("nombre"));
+                objeto.setDireccion(rs.getString("direccion"));
+                objeto.setResultadoEncontrado(true);
+            } else {
+                objeto.setResultadoEncontrado(false);
+            }
+        } catch (SQLException e) {
+            System.out.println("¡Error al buscar cliente!, " + e);
+        } finally {
+            
+        }
+    }
+
     public DefaultTableModel verCliente() {
         DefaultTableModel modeloCliente = new DefaultTableModel();
 
