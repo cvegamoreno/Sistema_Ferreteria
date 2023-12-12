@@ -9,11 +9,16 @@ package modelo;
  * @author Carlos
  */
 public class DTODetalleVenta {
+
     private int idDetalleVenta;
-    private int idVenta;
+    private int idCabecera;
     private int idProducto;
-    private int cantidadVendida;
+    private String nombreProducto;
+    private String descripcionProd;
+    private int cantidad;
     private double precioUnitario;
+    private double totalPagar;
+    private int estado;
 
     public DTODetalleVenta() {
     }
@@ -22,12 +27,16 @@ public class DTODetalleVenta {
         this.idDetalleVenta = idDetalleVenta;
     }
 
-    public DTODetalleVenta(int idDetalleVenta, int idVenta, int idProducto, int cantidadVendida, double precioUnitario) {
+    public DTODetalleVenta(int idDetalleVenta, int idCabecera, int idProducto, String nombreProducto, String descripcionProd, int cantidad, double precioUnitario, double totalPagar, int estado) {
         this.idDetalleVenta = idDetalleVenta;
-        this.idVenta = idVenta;
+        this.idCabecera = idCabecera;
         this.idProducto = idProducto;
-        this.cantidadVendida = cantidadVendida;
+        this.nombreProducto = nombreProducto;
+        this.descripcionProd = descripcionProd;
+        this.cantidad = cantidad;
         this.precioUnitario = precioUnitario;
+        this.totalPagar = totalPagar;
+        this.estado = estado;
     }
 
     public int getIdDetalleVenta() {
@@ -38,12 +47,12 @@ public class DTODetalleVenta {
         this.idDetalleVenta = idDetalleVenta;
     }
 
-    public int getIdVenta() {
-        return idVenta;
+    public int getIdCabecera() {
+        return idCabecera;
     }
 
-    public void setIdVenta(int idVenta) {
-        this.idVenta = idVenta;
+    public void setIdCabecera(int idCabecera) {
+        this.idCabecera = idCabecera;
     }
 
     public int getIdProducto() {
@@ -54,12 +63,28 @@ public class DTODetalleVenta {
         this.idProducto = idProducto;
     }
 
-    public int getCantidadVendida() {
-        return cantidadVendida;
+    public String getNombreProducto() {
+        return nombreProducto;
     }
 
-    public void setCantidadVendida(int cantidadVendida) {
-        this.cantidadVendida = cantidadVendida;
+    public void setNombreProducto(String nombreProducto) {
+        this.nombreProducto = nombreProducto;
+    }
+
+    public String getDescripcionProd() {
+        return descripcionProd;
+    }
+
+    public void setDescripcionProd(String descripcionProd) {
+        this.descripcionProd = descripcionProd;
+    }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
     }
 
     public double getPrecioUnitario() {
@@ -70,8 +95,21 @@ public class DTODetalleVenta {
         this.precioUnitario = precioUnitario;
     }
 
- 
-    
-   
+    public double getTotalPagar() {
+        return totalPagar;
+    }
 
+    public void setTotalPagar(double totalPagar) {
+        this.totalPagar = totalPagar;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+    
+    
 }

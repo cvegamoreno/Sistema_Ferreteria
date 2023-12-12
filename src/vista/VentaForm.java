@@ -5,14 +5,13 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.List;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
-import modelo.DAOCliente;
-import modelo.DAOProducto;
-import modelo.DAOTipoComprobante;
-import modelo.DTOCliente;
-import modelo.DTOProducto;
+import javax.swing.table.DefaultTableModel;
+import modelo.*;
 
 /**
  *
@@ -23,6 +22,7 @@ public class VentaForm extends javax.swing.JFrame {
     /**
      * Creates new form VentaForm
      */
+    int idDetalleVenta =1;
     public VentaForm() {
         initComponents();
         setLocationRelativeTo(null);
@@ -30,15 +30,15 @@ public class VentaForm extends javax.swing.JFrame {
         habilitarBotones(false, false, false, false, false, true, false);
         habilitarTxt(false, false, false, false, false, false, false, false, false, false, false, false);
     }
-    
-    void verTipoComprobante(){
+
+    void verTipoComprobante() {
         DefaultComboBoxModel modelocomprobante;
         DAOTipoComprobante objeto = new DAOTipoComprobante();
         modelocomprobante = objeto.verTipoCom();
         cbxTipo.setModel(modelocomprobante);
-        
+
     }
-    
+
     void habilitarBotones(boolean b, boolean bp, boolean ag, boolean ed, boolean el, boolean nw, boolean reg) {
         btnBuscar.setEnabled(b);
         btnBuscarproducto.setEnabled(bp);
@@ -48,7 +48,7 @@ public class VentaForm extends javax.swing.JFrame {
         btnNuevo.setEnabled(nw);
         btnRegistrar.setEnabled(reg);
     }
-    
+
     void habilitarTxt(boolean doc, boolean tipo, boolean ser, boolean cl, boolean fe, boolean dir, boolean pro, boolean can, boolean stk, boolean sbt, boolean igv, boolean tot) {
         txtDocumento.setEnabled(doc);
         cbxTipo.setEnabled(tipo);
@@ -63,8 +63,8 @@ public class VentaForm extends javax.swing.JFrame {
         txtIgv.setEnabled(igv);
         txtTotal.setEnabled(tot);
     }
-    
-    void limpiar (){
+
+    void limpiar() {
         txtDocumento.setText("");
         txtSerie.setText("");
         txtCliente.setText("");
@@ -77,6 +77,38 @@ public class VentaForm extends javax.swing.JFrame {
         txtIgv.setText("");
         txtTotal.setText("");
     }
+
+    void limpiarProd() {
+        txtProducto.setText("");
+        txtCantidad.setText("");
+        txtStock.setText("");
+    }
+
+    ArrayList<DTODetalleVenta> listaProductos = new ArrayList<>();
+    private DTODetalleVenta producto;
+
+    public void listaTablaProductos() {
+        // Supongamos que "tblProductos" es tu tabla en la interfaz gráfica
+        DefaultTableModel modelo = (DefaultTableModel) tblVentatotal.getModel();
+
+        // Limpiar la tabla antes de agregar nuevos datos
+        modelo.setRowCount(0);
+
+        // Recorrer la lista de productos y agregar filas a la tabla
+        for (DTODetalleVenta producto : listaProductos) {
+            Object[] fila = {
+                producto.getIdDetalleVenta(),
+                producto.getNombreProducto(),
+                producto.getDescripcionProd(),
+                producto.getCantidad(),
+                producto.getPrecioUnitario(),
+                producto.getTotalPagar(),
+                producto.getEstado()
+            };
+            modelo.addRow(fila);
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -187,6 +219,12 @@ public class VentaForm extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         jLabel4.setText("Producto: ");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 80, 30));
+
+        txtProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtProductoKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtProducto, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 240, 30));
 
         btnBuscarproducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/lupa.png"))); // NOI18N
@@ -222,6 +260,11 @@ public class VentaForm extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btnAgregarMouseExited(evt);
+            }
+        });
+        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarActionPerformed(evt);
             }
         });
         getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 180, -1, 30));
@@ -424,7 +467,7 @@ public class VentaForm extends javax.swing.JFrame {
 
         // Verificar si se encontraron resultados
         if (objeto.isResultadoEncontrado()) {
-            
+
             String nombreCliente = objeto.getNombreCliente();
             String direccion = objeto.getDireccion();
 
@@ -464,7 +507,7 @@ public class VentaForm extends javax.swing.JFrame {
 
         // Verificar si se encontraron resultados
         if (objeto.isResultadoEncontrado()) {
-            
+
             String nombreProducto = objeto.getNombreProd();
             int stock = objeto.getStock();
 
@@ -477,7 +520,7 @@ public class VentaForm extends javax.swing.JFrame {
             txtCantidad.setText("");
             txtStock.setText("");
         }
-        habilitarBotones(false, true, false, false, false, true, false);
+        habilitarBotones(false, true, true, false, false, true, false);
         habilitarTxt(false, true, true, false, true, false, true, true, false, false, false, false);
         txtCantidad.requestFocus();
     }//GEN-LAST:event_btnBuscarproductoMouseClicked
@@ -486,6 +529,78 @@ public class VentaForm extends javax.swing.JFrame {
         habilitarBotones(false, true, false, true, true, true, false);
         habilitarTxt(false, true, true, false, true, false, true, true, false, false, false, false);
     }//GEN-LAST:event_tblVentatotalMouseClicked
+
+    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+
+        if (txtProducto.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Busque un producto");
+        } else {
+            // Validar que ingrese una cantidad
+            if (!txtCantidad.getText().isEmpty()) {
+                // Validar que el usuario no ingrese caracteres no numéricos
+                boolean validacion = validar(txtCantidad.getText());
+                if (validacion == true) {
+                    // Validar que la cantidad sea mayor a cero
+                    int cantidad = Integer.parseInt(txtCantidad.getText());
+                    if (cantidad > 0) {
+
+                        DAOVentas daoVentas = new DAOVentas();
+
+                        DTOProducto producto = new DTOProducto();
+                        producto.setNombreProd(txtProducto.getText().trim());
+                        daoVentas.DatosDelProducto(producto);
+
+                        if (cantidad <= producto.getStock()) {
+                            double precioUnitario = producto.getPrecioprod();
+                            double totalPagar = cantidad * precioUnitario;
+
+                            totalPagar = (double) Math.round(totalPagar * 100) / 100;
+                            
+
+                            // Crear un nuevo producto
+                            DTODetalleVenta detalleVenta = new DTODetalleVenta(
+                                    idDetalleVenta, // idDetalleVenta
+                                    1, // idCabecera
+                                    producto.getIdProducto(),
+                                    producto.getNombreProd(),
+                                    producto.getDescripcionprod(),
+                                    cantidad,
+                                    precioUnitario,
+                                    totalPagar,
+                                    1 // estado
+                            );
+
+                            // Añadir el producto a la lista
+                            listaProductos.add(detalleVenta);
+                            idDetalleVenta++;
+
+                        } else {
+                            JOptionPane.showMessageDialog(null, "La cantidad supera el Stock");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "La cantidad no puede ser cero (0) ni negativa");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "En la cantidad no se admiten caracteres no numéricos");
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingresa la cantidad de productos");
+            }
+        }
+
+        // Llamar al método
+        listaTablaProductos();
+
+        habilitarBotones(false, true, true, false, false, true, true);
+        habilitarTxt(false, true, true, false, true, false, true, false, false, false, false, false);
+        limpiarProd();
+    }//GEN-LAST:event_btnAgregarActionPerformed
+
+    private void txtProductoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductoKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            btnBuscarproductoMouseClicked(null);
+        }
+    }//GEN-LAST:event_txtProductoKeyPressed
 
     /**
      * @param args the command line arguments
@@ -561,4 +676,14 @@ public class VentaForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtSubtotal;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
+
+    private boolean validar(String valor) {
+        try {
+            int num = Integer.parseInt(valor);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
 }
