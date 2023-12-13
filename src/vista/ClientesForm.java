@@ -44,7 +44,6 @@ public class ClientesForm extends javax.swing.JFrame {
 
     void habilitarBotones(boolean a, boolean b, boolean ed, boolean el, boolean id, boolean nom, boolean dir, boolean tel, boolean tip, boolean num) {
         btnAgregar.setEnabled(a);
-        btnBuscar.setEnabled(b);
         btnEditar.setEnabled(ed);
         btnEliminar.setEnabled(el);
         txtId.setEnabled(id);
@@ -77,7 +76,6 @@ public class ClientesForm extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblCliente = new javax.swing.JTable();
         btnEditar = new javax.swing.JButton();
-        btnBuscar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -93,7 +91,6 @@ public class ClientesForm extends javax.swing.JFrame {
         btnAgregar = new javax.swing.JButton();
         btnSalir2 = new javax.swing.JButton();
         CboTipoCliente = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -129,6 +126,7 @@ public class ClientesForm extends javax.swing.JFrame {
         jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 310, 70, 40));
 
         tblCliente.setBackground(new java.awt.Color(255, 204, 102));
+        tblCliente.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tblCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -148,7 +146,8 @@ public class ClientesForm extends javax.swing.JFrame {
                 "ID", "Nombre / Razon Social", "RUC", "DNI", "Direccion", "Telefono"
             }
         ));
-        tblCliente.setColumnSelectionAllowed(true);
+        tblCliente.setCellSelectionEnabled(false);
+        tblCliente.setRowSelectionAllowed(true);
         tblCliente.setSelectionBackground(new java.awt.Color(0, 204, 255));
         tblCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -177,18 +176,6 @@ public class ClientesForm extends javax.swing.JFrame {
             }
         });
         jPanel2.add(btnEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 310, 70, 40));
-
-        btnBuscar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnBuscar.setText("Buscar");
-        btnBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnBuscarMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnBuscarMouseExited(evt);
-            }
-        });
-        jPanel2.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 310, 90, 40));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setText("ID Cliente: ");
@@ -287,7 +274,6 @@ public class ClientesForm extends javax.swing.JFrame {
             }
         });
         jPanel2.add(CboTipoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, 110, 30));
-        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 310, 240, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo bl.jpg"))); // NOI18N
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 910, 560));
@@ -436,14 +422,6 @@ public class ClientesForm extends javax.swing.JFrame {
     private void btnEliminarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseExited
          btnEliminar.setBackground(new Color(255,255,255 ));
     }//GEN-LAST:event_btnEliminarMouseExited
-
-    private void btnBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseEntered
-        btnBuscar.setBackground(new Color(249, 162, 28 ));
-    }//GEN-LAST:event_btnBuscarMouseEntered
-
-    private void btnBuscarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseExited
-        btnBuscar.setBackground(new Color(255,255,255 ));
-    }//GEN-LAST:event_btnBuscarMouseExited
     
     /**
      * @param args the command line arguments
@@ -486,7 +464,6 @@ public class ClientesForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> CboTipoCliente;
     private javax.swing.JButton btnAgregar;
-    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnEditar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnNuevo;
@@ -501,7 +478,6 @@ public class ClientesForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tblCliente;
     private javax.swing.JTextField txtDireccion;
     private javax.swing.JTextField txtId;

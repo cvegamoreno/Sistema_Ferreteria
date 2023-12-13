@@ -138,6 +138,7 @@ public class FrmProducto extends javax.swing.JFrame {
         getContentPane().add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 70, 40));
 
         tblproducto.setBackground(new java.awt.Color(255, 204, 102));
+        tblproducto.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         tblproducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -155,6 +156,7 @@ public class FrmProducto extends javax.swing.JFrame {
                 "ID", "Nombre Producto", "Descripcion", "Precio Unitario", "Stock", "Medidas"
             }
         ));
+        tblproducto.setAutoscrolls(false);
         tblproducto.setSelectionBackground(new java.awt.Color(0, 204, 255));
         tblproducto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
