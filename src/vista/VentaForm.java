@@ -22,7 +22,8 @@ public class VentaForm extends javax.swing.JFrame {
     /**
      * Creates new form VentaForm
      */
-    int idDetalleVenta =1;
+    int idDetalleVenta = 1;
+
     public VentaForm() {
         initComponents();
         setLocationRelativeTo(null);
@@ -491,6 +492,12 @@ public class VentaForm extends javax.swing.JFrame {
     }//GEN-LAST:event_txtDocumentoKeyPressed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
+        if (!txtDocumento.getText().isEmpty()) {
+            int opcion = JOptionPane.showConfirmDialog(this, "¿Desea ingresar un nuevo documento?", "Confirmar", JOptionPane.YES_NO_OPTION);
+            if (opcion == JOptionPane.NO_OPTION) {
+                return;
+            }
+        }
         habilitarBotones(true, false, false, false, false, false, false);
         habilitarTxt(true, false, false, false, false, false, false, false, false, false, false, false);
         txtDocumento.requestFocus();
@@ -555,7 +562,6 @@ public class VentaForm extends javax.swing.JFrame {
                             double totalPagar = cantidad * precioUnitario;
 
                             totalPagar = (double) Math.round(totalPagar * 100) / 100;
-                            
 
                             // Crear un nuevo producto
                             DTODetalleVenta detalleVenta = new DTODetalleVenta(
