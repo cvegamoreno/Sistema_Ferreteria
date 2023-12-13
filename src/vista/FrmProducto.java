@@ -30,7 +30,6 @@ public class FrmProducto extends javax.swing.JFrame {
         txtdescripcionprod.setText("");
         txtprecioprod.setText("");
         txtstock.setText("");
-        txtmedidas.setText("");
         txtidProducto.requestFocus();
     }
     
@@ -67,8 +66,6 @@ public class FrmProducto extends javax.swing.JFrame {
         txtprecioprod = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtstock = new javax.swing.JTextField();
-        txtmedidas = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblproducto = new javax.swing.JTable();
@@ -117,23 +114,10 @@ public class FrmProducto extends javax.swing.JFrame {
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel7.setText("Stock :");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, -1, 30));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 200, -1, 30));
 
         txtstock.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        getContentPane().add(txtstock, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 80, 30));
-
-        txtmedidas.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        txtmedidas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtmedidasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtmedidas, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 120, 30));
-
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel9.setText("Medidas :");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, -1, 30));
+        getContentPane().add(txtstock, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, 80, 30));
 
         btnAgregar.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         btnAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/guardar.png"))); // NOI18N
@@ -271,14 +255,13 @@ public class FrmProducto extends javax.swing.JFrame {
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
         String nombreProd,descripcionprod;
         int stock,idProducto;
-        double precioprod,medidas;
+        double precioprod;
         
         idProducto = Integer.parseInt(txtidProducto.getText());
         nombreProd = txtnombreProd.getText();
         descripcionprod = txtdescripcionprod.getText();
         precioprod = Double.parseDouble(txtprecioprod.getText());
         stock = Integer.parseInt(txtstock.getText());
-        medidas = Double.parseDouble(txtmedidas.getText());
         
         DTOProducto oProd= new DTOProducto();
         oProd.setIdProducto(idProducto);
@@ -286,7 +269,6 @@ public class FrmProducto extends javax.swing.JFrame {
         oProd.setDescripcionprod(descripcionprod);
         oProd.setPrecioprod(precioprod);
         oProd.setStock(stock);
-        oProd.setMedidas(medidas);
         
         DAOProducto oDProd=new DAOProducto();
         oDProd.editarProducto(oProd);
@@ -300,14 +282,13 @@ public class FrmProducto extends javax.swing.JFrame {
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
         String nombreProd,descripcionprod;
         int stock,idProducto;
-        double precioprod,medidas;
+        double precioprod;
         
         idProducto = Integer.parseInt(txtidProducto.getText());
         nombreProd = txtnombreProd.getText();
         descripcionprod = txtdescripcionprod.getText();
         precioprod = Double.parseDouble(txtprecioprod.getText());
         stock = Integer.parseInt(txtstock.getText());
-        medidas = Double.parseDouble(txtmedidas.getText());
         
         DTOProducto oProd= new DTOProducto();
         oProd.setIdProducto(idProducto);
@@ -315,7 +296,6 @@ public class FrmProducto extends javax.swing.JFrame {
         oProd.setDescripcionprod(descripcionprod);
         oProd.setPrecioprod(precioprod);
         oProd.setStock(stock);
-        oProd.setMedidas(medidas);
         
         DAOProducto oDProd=new DAOProducto();
         oDProd.agregarProducto(oProd);
@@ -329,20 +309,20 @@ public class FrmProducto extends javax.swing.JFrame {
     private void tblproductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblproductoMouseClicked
         int fila;
         fila = tblproducto.getSelectedRow();
-        String id,nombre,descripcion,precio,stock,medidas;
+        String id,nombre,descripcion,precio,stock;
         id = (String) tblproducto.getValueAt(fila,0);
         nombre = (String) tblproducto.getValueAt(fila,1);
         descripcion = (String) tblproducto.getValueAt(fila,2);
         precio = (String) tblproducto.getValueAt(fila,3);
         stock = (String) tblproducto.getValueAt(fila,4);
-        medidas = (String) tblproducto.getValueAt(fila,5);
+        
         
         txtidProducto.setText(id);
         txtnombreProd.setText(nombre);
         txtdescripcionprod.setText(descripcion);
         txtprecioprod.setText(precio);
         txtstock.setText(stock);
-        txtmedidas.setText(medidas);
+        
         habilitarBotones(false, true, true);
 
     }//GEN-LAST:event_tblproductoMouseClicked
@@ -409,10 +389,6 @@ public class FrmProducto extends javax.swing.JFrame {
         btnSalir.setBackground(new Color(255,255,255 ));
     }//GEN-LAST:event_btnSalirMouseExited
 
-    private void txtmedidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtmedidasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtmedidasActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -468,12 +444,10 @@ public class FrmProducto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblproducto;
     private javax.swing.JTextField txtdescripcionprod;
     private javax.swing.JTextField txtidProducto;
-    private javax.swing.JTextField txtmedidas;
     private javax.swing.JTextField txtnombreProd;
     private javax.swing.JTextField txtprecioprod;
     private javax.swing.JTextField txtstock;

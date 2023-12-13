@@ -50,7 +50,6 @@ public class PrincipalForm extends javax.swing.JFrame {
         opCargarUsuario = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
         opCargarVenta = new javax.swing.JMenuItem();
-        opListaVenta = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         opCargarRegistro = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
@@ -173,16 +172,6 @@ public class PrincipalForm extends javax.swing.JFrame {
         });
         editMenu.add(opCargarVenta);
 
-        opListaVenta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        opListaVenta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/flecha-correcta.png"))); // NOI18N
-        opListaVenta.setText("Lista de Ventas");
-        opListaVenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                opListaVentaActionPerformed(evt);
-            }
-        });
-        editMenu.add(opListaVenta);
-
         menuBar.add(editMenu);
 
         helpMenu.setBackground(new java.awt.Color(255, 204, 102));
@@ -278,11 +267,6 @@ public class PrincipalForm extends javax.swing.JFrame {
         btnMinimizar.setBackground(new Color(255,255,255) );
     }//GEN-LAST:event_btnMinimizarMouseExited
 
-    private void opListaVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opListaVentaActionPerformed
-        BusquedaVentas frmVentas = new BusquedaVentas();
-        frmVentas.setVisible(true);
-    }//GEN-LAST:event_opListaVentaActionPerformed
-
     private void opCargarUsuarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_opCargarUsuarioMouseEntered
         
     }//GEN-LAST:event_opCargarUsuarioMouseEntered
@@ -343,7 +327,6 @@ public class PrincipalForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem opCargarRegistro;
     private javax.swing.JMenuItem opCargarUsuario;
     private javax.swing.JMenuItem opCargarVenta;
-    private javax.swing.JMenuItem opListaVenta;
     private javax.swing.JMenuItem opRegistrocli;
     // End of variables declaration//GEN-END:variables
 

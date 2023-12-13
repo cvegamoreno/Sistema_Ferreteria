@@ -209,7 +209,7 @@ public class VentaForm extends javax.swing.JFrame {
         });
         getContentPane().add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 50, 30));
 
-        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Boleta", "Fact" }));
+        cbxTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "B", "F" }));
         getContentPane().add(cbxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, 80, 30));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
