@@ -89,10 +89,8 @@ public class VentaForm extends javax.swing.JFrame {
     private DTODetalleVenta producto;
 
     public void listaTablaProductos() {
-        // Supongamos que "tblProductos" es tu tabla en la interfaz gráfica
         DefaultTableModel modelo = (DefaultTableModel) tblVentatotal.getModel();
 
-        // Limpiar la tabla antes de agregar nuevos datos
         modelo.setRowCount(0);
 
         // Recorrer la lista de productos y agregar filas a la tabla
@@ -391,7 +389,21 @@ public class VentaForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+        int selectedRow = tblVentatotal.getSelectedRow();
+
+        // Verifica si hay una fila seleccionada
+        if (selectedRow != -1) {
+            // Elimina la fila seleccionada del modelo de la tabla
+            DefaultTableModel modelo = (DefaultTableModel) tblVentatotal.getModel();
+            modelo.removeRow(selectedRow);
+
+            // Elimina el producto correspondiente de la lista
+            listaProductos.remove(selectedRow);
+
+        } else {
+            // Muestra un mensaje de advertencia indicando que no hay fila seleccionada
+            JOptionPane.showMessageDialog(null, "Selecciona una fila para eliminar", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnBuscarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarMouseEntered
@@ -520,6 +532,10 @@ public class VentaForm extends javax.swing.JFrame {
 
             txtProducto.setText(nombreProducto);
             txtStock.setText(String.valueOf(stock));
+
+            habilitarBotones(false, true, true, false, false, true, false);
+            habilitarTxt(false, true, true, false, true, false, true, true, false, false, false, false);
+            txtCantidad.requestFocus();
         } else {
             JOptionPane.showMessageDialog(this, "¡Producto no encontrado en la base de datos!", "Error", JOptionPane.ERROR_MESSAGE);
 
@@ -533,7 +549,7 @@ public class VentaForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBuscarproductoMouseClicked
 
     private void tblVentatotalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblVentatotalMouseClicked
-        habilitarBotones(false, true, false, true, true, true, false);
+        habilitarBotones(false, true, false, true, true, true, true);
         habilitarTxt(false, true, true, false, true, false, true, true, false, false, false, false);
     }//GEN-LAST:event_tblVentatotalMouseClicked
 
@@ -580,6 +596,10 @@ public class VentaForm extends javax.swing.JFrame {
                             listaProductos.add(detalleVenta);
                             idDetalleVenta++;
 
+                            habilitarBotones(false, true, true, false, false, true, true);
+                            habilitarTxt(false, true, true, false, true, false, true, false, false, false, false, false);
+                            limpiarProd();
+
                         } else {
                             JOptionPane.showMessageDialog(null, "La cantidad supera el Stock");
                         }
@@ -593,13 +613,7 @@ public class VentaForm extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Ingresa la cantidad de productos");
             }
         }
-
-        // Llamar al método
         listaTablaProductos();
-
-        habilitarBotones(false, true, true, false, false, true, true);
-        habilitarTxt(false, true, true, false, true, false, true, false, false, false, false, false);
-        limpiarProd();
     }//GEN-LAST:event_btnAgregarActionPerformed
 
     private void txtProductoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtProductoKeyPressed

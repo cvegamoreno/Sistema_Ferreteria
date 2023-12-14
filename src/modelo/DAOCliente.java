@@ -22,7 +22,7 @@ public class DAOCliente {
     private final String SQLINSERTAR = "INSERT INTO clientes(cliente_id, nombre, direccion, telefono, tipo_cliente_id, numerocli) values(?,?,?,?,?,?)";
     private final String SQLEDITAR = "UPDATE clientes SET cliente_id= ?, nombre =?, direccion=?, telefono =?, tipo_cliente_id =?, numerocli =? WHERE cliente_id =?";
     private final String SQLELIMINAR = "DELETE FROM clientes WHERE cliente_id=?";
-    private final String SQLVER = "SELECT cliente_id, nombre, direccion, telefono, tipocli, numerocli FROM clientes, tipocliente WHERE tipocliente.tipo_cliente_id = clientes.tipo_cliente_id";
+    private final String SQLVER = "SELECT cliente_id, nombre, direccion, telefono, tipocli, numerocli FROM clientes, tipocliente WHERE tipocliente.tipo_cliente_id = clientes.tipo_cliente_id ORDER BY cliente_id";
     private final String SQLBUSCAR = "SELECT nombre, direccion FROM clientes where numerocli = ?";
 
     public DAOCliente() {
